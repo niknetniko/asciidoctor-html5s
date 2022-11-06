@@ -3,7 +3,7 @@
     a.footnote-ref [
         id=(footnoteref_id unless type == :xref)
         href="##{footnote_id}"
-        title="View footnote #{index}"
+        title=((document.attr 'view-footnote', "View footnote") + " #{index}")
         role='doc-noteref' ]
       | #{index}
 - else

@@ -810,223 +810,233 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
   def admonition(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; capture do; 
-      ; _buf << ("<h6"); _temple_html_attributeremover1 = []; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "block-title"; _temple_html_attributemerger1[1] = []; _slim_codeattributes1 = ('label-only' unless title?); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << (_slim_codeattributes1.join(" ")); else; _temple_html_attributemerger1[1] << (_slim_codeattributes1); end; _temple_html_attributemerger1[1] = _temple_html_attributemerger1[1].join(""); _temple_html_attributeremover1 << (_temple_html_attributemerger1.reject(&:empty?).join(" ")); _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << ("><span class=\"title-label\">"); 
-      ; _buf << ("#{local_attr :textlabel}: "); 
-      ; _buf << ("</span>"); _buf << (title); 
-      ; _buf << ("</h6>"); _slim_controls1 = html_tag_if !blocks?, :p do; _slim_controls2 = []; 
-      ; _slim_controls2 << (content); 
-      ; _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); end; if admonition_aside?; 
-      ; _buf << ("<aside"); _temple_html_attributeremover2 = []; _temple_html_attributemerger2 = []; _temple_html_attributemerger2[0] = "admonition-block"; _temple_html_attributemerger2[1] = []; _slim_codeattributes2 = [(attr :name), role]; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributemerger2[1] << (_slim_codeattributes2.join(" ")); else; _temple_html_attributemerger2[1] << (_slim_codeattributes2); end; _temple_html_attributemerger2[1] = _temple_html_attributemerger2[1].join(""); _temple_html_attributeremover2 << (_temple_html_attributemerger2.reject(&:empty?).join(" ")); _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover2); _buf << ("\""); end; _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes3); _buf << ("\""); end; end; _slim_codeattributes4 = admonition_aria; if _slim_codeattributes4; if _slim_codeattributes4 == true; _buf << (" role"); else; _buf << (" role=\""); _buf << (_slim_codeattributes4); _buf << ("\""); end; end; _buf << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; capture do; 
+      ; _buf << ("<h6".freeze); _temple_html_attributeremover1 = ''; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "block-title"; _temple_html_attributemerger1[1] = ''; _slim_codeattributes1 = ('label-only' unless title?); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributemerger1[1] << ((_slim_codeattributes1).to_s); end; _temple_html_attributemerger1[1]; _temple_html_attributeremover1 << ((_temple_html_attributemerger1.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << ("><span class=\"title-label\">".freeze); 
+      ; _buf << (("#{local_attr :textlabel}: ").to_s); 
+      ; _buf << ("</span>".freeze); _buf << ((title).to_s); 
+      ; _buf << ("</h6>".freeze); _slim_controls1 = html_tag_if !blocks?, :p do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2; end; _buf << ((_slim_controls1).to_s); end; if admonition_aside?; 
+      ; _buf << ("<aside".freeze); _temple_html_attributeremover2 = ''; _temple_html_attributemerger2 = []; _temple_html_attributemerger2[0] = "admonition-block"; _temple_html_attributemerger2[1] = ''; _slim_codeattributes2 = [(attr :name), role]; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributemerger2[1] << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributemerger2[1] << ((_slim_codeattributes2).to_s); end; _temple_html_attributemerger2[1]; _temple_html_attributeremover2 << ((_temple_html_attributemerger2.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover2).to_s); _buf << ("\"".freeze); end; _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes4 = admonition_aria; if _slim_codeattributes4; if _slim_codeattributes4 == true; _buf << (" role".freeze); else; _buf << (" role=\"".freeze); _buf << ((_slim_codeattributes4).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
       ; yield_capture; 
-      ; _buf << ("</aside>"); else; 
-      ; _buf << ("<section"); _temple_html_attributeremover3 = []; _temple_html_attributemerger3 = []; _temple_html_attributemerger3[0] = "admonition-block"; _temple_html_attributemerger3[1] = []; _slim_codeattributes5 = [(attr :name), role]; if Array === _slim_codeattributes5; _slim_codeattributes5 = _slim_codeattributes5.flatten; _slim_codeattributes5.map!(&:to_s); _slim_codeattributes5.reject!(&:empty?); _temple_html_attributemerger3[1] << (_slim_codeattributes5.join(" ")); else; _temple_html_attributemerger3[1] << (_slim_codeattributes5); end; _temple_html_attributemerger3[1] = _temple_html_attributemerger3[1].join(""); _temple_html_attributeremover3 << (_temple_html_attributemerger3.reject(&:empty?).join(" ")); _temple_html_attributeremover3 = _temple_html_attributeremover3.join(""); if !_temple_html_attributeremover3.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover3); _buf << ("\""); end; _slim_codeattributes6 = id; if _slim_codeattributes6; if _slim_codeattributes6 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes6); _buf << ("\""); end; end; _slim_codeattributes7 = admonition_aria; if _slim_codeattributes7; if _slim_codeattributes7 == true; _buf << (" role"); else; _buf << (" role=\""); _buf << (_slim_codeattributes7); _buf << ("\""); end; end; _buf << (">"); 
+      ; _buf << ("</aside>".freeze); else; 
+      ; _buf << ("<section".freeze); _temple_html_attributeremover3 = ''; _temple_html_attributemerger3 = []; _temple_html_attributemerger3[0] = "admonition-block"; _temple_html_attributemerger3[1] = ''; _slim_codeattributes5 = [(attr :name), role]; if Array === _slim_codeattributes5; _slim_codeattributes5 = _slim_codeattributes5.flatten; _slim_codeattributes5.map!(&:to_s); _slim_codeattributes5.reject!(&:empty?); _temple_html_attributemerger3[1] << ((_slim_codeattributes5.join(" ")).to_s); else; _temple_html_attributemerger3[1] << ((_slim_codeattributes5).to_s); end; _temple_html_attributemerger3[1]; _temple_html_attributeremover3 << ((_temple_html_attributemerger3.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover3; if !_temple_html_attributeremover3.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover3).to_s); _buf << ("\"".freeze); end; _slim_codeattributes6 = id; if _slim_codeattributes6; if _slim_codeattributes6 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes6).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes7 = admonition_aria; if _slim_codeattributes7; if _slim_codeattributes7 == true; _buf << (" role".freeze); else; _buf << (" role=\"".freeze); _buf << ((_slim_codeattributes7).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
       ; yield_capture; 
-      ; _buf << ("</section>"); end; _buf = _buf.join("")
+      ; _buf << ("</section>".freeze); end; _buf
     end
   end
 
   def audio(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_caption :bottom, :class=>'audio-block' do; _slim_controls2 = []; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_caption :bottom, :class=>'audio-block' do; _slim_controls2 = ''; 
       ; 
       ; 
       ; 
       ; 
-      ; _slim_controls2 << ("<audio"); _slim_codeattributes1 = media_uri(attr :target); if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls2 << (" src"); else; _slim_controls2 << (" src=\""); _slim_controls2 << (_slim_codeattributes1); _slim_controls2 << ("\""); end; end; _slim_codeattributes2 = (option? 'autoplay'); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" autoplay"); else; _slim_controls2 << (" autoplay=\""); _slim_controls2 << (_slim_codeattributes2); _slim_controls2 << ("\""); end; end; _slim_codeattributes3 = !(option? 'nocontrols'); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" controls"); else; _slim_controls2 << (" controls=\""); _slim_controls2 << (_slim_codeattributes3); _slim_controls2 << ("\""); end; end; _slim_codeattributes4 = (option? 'loop'); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" loop"); else; _slim_controls2 << (" loop=\""); _slim_controls2 << (_slim_codeattributes4); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">Your browser does not support the audio tag.</audio>"); 
+      ; _slim_controls2 << ("<audio".freeze); _slim_codeattributes1 = media_uri(attr :target); if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls2 << (" src".freeze); else; _slim_controls2 << (" src=\"".freeze); _slim_controls2 << ((_slim_codeattributes1).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes2 = (option? 'autoplay'); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" autoplay".freeze); else; _slim_controls2 << (" autoplay=\"".freeze); _slim_controls2 << ((_slim_codeattributes2).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes3 = !(option? 'nocontrols'); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" controls".freeze); else; _slim_controls2 << (" controls=\"".freeze); _slim_controls2 << ((_slim_codeattributes3).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes4 = (option? 'loop'); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" loop".freeze); else; _slim_controls2 << (" loop=\"".freeze); _slim_controls2 << ((_slim_codeattributes4).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">Your browser does not support the audio tag.</audio>".freeze); 
       ; 
-      ; _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def colist(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; 
-      ; _buf << ("<ol"); _temple_html_attributeremover1 = []; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "callout-list"; _temple_html_attributemerger1[1] = []; _slim_codeattributes1 = [style, role]; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << (_slim_codeattributes1.join(" ")); else; _temple_html_attributemerger1[1] << (_slim_codeattributes1); end; _temple_html_attributemerger1[1] = _temple_html_attributemerger1[1].join(""); _temple_html_attributeremover1 << (_temple_html_attributemerger1.reject(&:empty?).join(" ")); _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _slim_codeattributes2 = id; if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes2); _buf << ("\""); end; end; _buf << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; 
+      ; _buf << ("<ol".freeze); _temple_html_attributeremover1 = ''; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "callout-list"; _temple_html_attributemerger1[1] = ''; _slim_codeattributes1 = [style, role]; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributemerger1[1] << ((_slim_codeattributes1).to_s); end; _temple_html_attributemerger1[1]; _temple_html_attributeremover1 << ((_temple_html_attributemerger1.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _slim_codeattributes2 = id; if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes2).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
       ; items.each do |item|; 
-      ; _buf << ("<li>"); _buf << (item.text); 
-      ; _buf << ("</li>"); end; _buf << ("</ol>"); _buf = _buf.join("")
+      ; _buf << ("<li>".freeze); _buf << ((item.text).to_s); 
+      ; _buf << ("</li>".freeze); end; _buf << ("</ol>".freeze); _buf
     end
   end
 
   def dlist(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_title :class=>['dlist', style], :role=>('doc-qna' if style == 'qanda') do; _slim_controls2 = []; 
-      ; _slim_controls2 << ("<dl"); _temple_html_attributeremover1 = []; _slim_codeattributes1 = style; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes1.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes1); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover1); _slim_controls2 << ("\""); end; _slim_controls2 << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_title :class=>['dlist', style], :role=>('doc-qna' if style == 'qanda') do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ("<dl".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes1 = style; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes1).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover1).to_s); _slim_controls2 << ("\"".freeze); end; _slim_controls2 << (">".freeze); 
       ; items.each do |terms, dd|; 
       ; [*terms].each do |dt|; 
-      ; _slim_controls2 << ("<dt>"); _slim_controls2 << (dt.text); 
-      ; _slim_controls2 << ("</dt>"); end; unless dd.nil?; 
-      ; _slim_controls2 << ("<dd>"); _slim_controls2 << ((print_item_content dd)); 
-      ; _slim_controls2 << ("</dd>"); end; end; _slim_controls2 << ("</dl>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls2 << ("<dt>".freeze); _slim_controls2 << ((dt.text).to_s); 
+      ; _slim_controls2 << ("</dt>".freeze); end; unless dd.nil?; 
+      ; _slim_controls2 << ("<dd>".freeze); _slim_controls2 << (((print_item_content dd)).to_s); 
+      ; _slim_controls2 << ("</dd>".freeze); end; end; _slim_controls2 << ("</dl>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def document(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << ("<!DOCTYPE html><html"); 
-      ; _slim_codeattributes1 = (attr :lang, 'en' unless attr? :nolang); if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" lang"); else; _buf << (" lang=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _buf << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ("<!DOCTYPE html><html".freeze); 
+      ; _slim_codeattributes1 = (attr :lang, 'en' unless attr? :nolang); if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" lang".freeze); else; _buf << (" lang=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
       ; 
       ; 
       ; 
       ; 
       ; document_content = content; 
-      ; _buf << ("<head><meta"); 
-      ; _slim_codeattributes2 = (attr :encoding, 'UTF-8'); if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" charset"); else; _buf << (" charset=\""); _buf << (_slim_codeattributes2); _buf << ("\""); end; end; _buf << ("><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"generator\" content=\"Asciidoctor "); 
+      ; _buf << ("<head><meta".freeze); 
+      ; _slim_codeattributes2 = (attr :encoding, 'UTF-8'); if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" charset".freeze); else; _buf << (" charset=\"".freeze); _buf << ((_slim_codeattributes2).to_s); _buf << ("\"".freeze); end; end; _buf << ("><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"generator\" content=\"Asciidoctor ".freeze); 
       ; 
       ; 
-      ; _buf << (attr 'asciidoctor-version'); _buf << ("\">"); 
-      ; _buf << (html_meta_if 'application-name', (attr 'app-name')); 
-      ; _buf << (html_meta_if 'author', (attr :authors)); 
-      ; _buf << (html_meta_if 'copyright', (attr :copyright)); 
-      ; _buf << (html_meta_if 'description', (attr :description)); 
-      ; _buf << (html_meta_if 'keywords', (attr :keywords)); 
-      ; _buf << ("<title>"); _buf << (((doctitle sanitize: true) || (attr 'untitled-label'))); 
-      ; _buf << ("</title>"); _buf << (styles_and_scripts); 
+      ; _buf << ((attr 'asciidoctor-version').to_s); _buf << ("\">".freeze); 
+      ; _buf << ((html_meta_if 'application-name', (attr 'app-name')).to_s); 
+      ; _buf << ((html_meta_if 'author', (attr :authors)).to_s); 
+      ; _buf << ((html_meta_if 'copyright', (attr :copyright)).to_s); 
+      ; _buf << ((html_meta_if 'description', (attr :description)).to_s); 
+      ; _buf << ((html_meta_if 'keywords', (attr :keywords)).to_s); 
+      ; _buf << ("<title>".freeze); _buf << ((((doctitle sanitize: true) || (attr 'untitled-label'))).to_s); 
+      ; _buf << ("</title>".freeze); _buf << ((styles_and_scripts).to_s); 
       ; unless (docinfo_content = docinfo).empty?; 
-      ; _buf << (docinfo_content); 
-      ; end; _buf << ("</head><body"); 
+      ; _buf << ((docinfo_content).to_s); 
+      ; end; _buf << ("</head><body".freeze); 
       ; 
       ; 
-      ; _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes3); _buf << ("\""); end; end; _temple_html_attributeremover1 = []; _slim_codeattributes4 = [(attr :doctype),
+      ; _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover1 = ''; _slim_codeattributes4 = [(attr :doctype),
       ("#{attr 'toc-class'} toc-#{attr 'toc-position', 'left'}" if (attr? 'toc-class') && (attr? :toc) && (attr? 'toc-placement', 'auto')),
-      (attr :docrole) || (attr :role)]; if Array === _slim_codeattributes4; _slim_codeattributes4 = _slim_codeattributes4.flatten; _slim_codeattributes4.map!(&:to_s); _slim_codeattributes4.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes4.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes4); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _slim_codeattributes5 = style_value(max_width: (attr 'max-width')); if _slim_codeattributes5; if _slim_codeattributes5 == true; _buf << (" style"); else; _buf << (" style=\""); _buf << (_slim_codeattributes5); _buf << ("\""); end; end; _buf << (">"); 
+      (attr :docrole) || (attr :role)]; if Array === _slim_codeattributes4; _slim_codeattributes4 = _slim_codeattributes4.flatten; _slim_codeattributes4.map!(&:to_s); _slim_codeattributes4.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes4.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes4).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _slim_codeattributes5 = style_value(max_width: (attr 'max-width')); if _slim_codeattributes5; if _slim_codeattributes5 == true; _buf << (" style".freeze); else; _buf << (" style=\"".freeze); _buf << ((_slim_codeattributes5).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
       ; unless (docinfo_content = (docinfo :header)).empty?; 
-      ; _buf << (docinfo_content); 
+      ; _buf << ((docinfo_content).to_s); 
       ; end; unless noheader; 
-      ; _buf << ("<header>"); 
+      ; _buf << ("<header>".freeze); 
       ; if header?; 
       ; unless notitle; 
-      ; _buf << ("<h1>"); _buf << (header.title); 
-      ; _buf << ("</h1>"); end; if [:author, :revnumber, :revdate, :revremark].any? {|a| attr? a }; 
-      ; _buf << ("<div class=\"details\">"); 
+      ; _buf << ("<h1>".freeze); _buf << ((header.title).to_s); 
+      ; _buf << ("</h1>".freeze); end; if [:author, :revnumber, :revdate, :revremark].any? {|a| attr? a }; 
+      ; _buf << ("<div class=\"details\">".freeze); 
       ; if attr? :author; 
-      ; _buf << ("<span class=\"author\" id=\"author\">"); _buf << ((attr :author)); 
-      ; _buf << ("</span><br>"); 
+      ; _buf << ("<span class=\"author\" id=\"author\">".freeze); _buf << (((attr :author)).to_s); 
+      ; _buf << ("</span><br>".freeze); 
       ; if attr? :email; 
-      ; _buf << ("<span class=\"email\" id=\"email\">"); _buf << (sub_macros(attr :email)); 
-      ; _buf << ("</span><br>"); 
+      ; _buf << ("<span class=\"email\" id=\"email\">".freeze); _buf << ((sub_macros(attr :email)).to_s); 
+      ; _buf << ("</span><br>".freeze); 
       ; end; if (authorcount = (attr :authorcount).to_i) > 1; 
       ; (2..authorcount).each do |idx|; 
-      ; _buf << ("<span class=\"author\" id=\"author"); _buf << (idx); _buf << ("\">"); _buf << ((attr "author_#{idx}")); 
-      ; _buf << ("</span><br>"); 
+      ; _buf << ("<span class=\"author\" id=\"author".freeze); _buf << ((idx).to_s); _buf << ("\">".freeze); _buf << (((attr "author_#{idx}")).to_s); 
+      ; _buf << ("</span><br>".freeze); 
       ; if attr? "email_#{idx}"; 
-      ; _buf << ("<span class=\"email\" id=\"email"); _buf << (idx); _buf << ("\">"); _buf << (sub_macros(attr "email_#{idx}")); 
-      ; _buf << ("</span>"); end; end; end; end; if attr? :revnumber; 
-      ; _buf << ("<span id=\"revnumber\">"); _buf << (((attr 'version-label') || '').downcase); _buf << (" "); _buf << (attr :revnumber); _buf << (',' if attr? :revdate); _buf << ("</span> "); 
+      ; _buf << ("<span class=\"email\" id=\"email".freeze); _buf << ((idx).to_s); _buf << ("\">".freeze); _buf << ((sub_macros(attr "email_#{idx}")).to_s); 
+      ; _buf << ("</span>".freeze); end; end; end; end; if attr? :revnumber; 
+      ; _buf << ("<span id=\"revnumber\">".freeze); _buf << ((((attr 'version-label') || '').downcase).to_s); _buf << (" ".freeze); _buf << ((attr :revnumber).to_s); _buf << ((',' if attr? :revdate).to_s); _buf << ("</span> ".freeze); 
       ; 
       ; end; if attr? :revdate; 
-      ; _buf << ("<time id=\"revdate\""); _slim_codeattributes6 = revdate_iso; if _slim_codeattributes6; if _slim_codeattributes6 == true; _buf << (" datetime"); else; _buf << (" datetime=\""); _buf << (_slim_codeattributes6); _buf << ("\""); end; end; _buf << (">"); _buf << ((attr :revdate)); 
-      ; _buf << ("</time>"); end; if attr? :revremark; 
-      ; _buf << ("<br><span id=\"revremark\">"); 
-      ; _buf << ((attr :revremark)); 
-      ; _buf << ("</span>"); end; _buf << ("</div>"); end; end; if (attr? :toc) && (attr? 'toc-placement', 'auto'); 
-      ; _buf << ("<nav id=\"toc\""); _temple_html_attributeremover2 = []; _slim_codeattributes7 = (document.attr 'toc-class', 'toc'); if Array === _slim_codeattributes7; _slim_codeattributes7 = _slim_codeattributes7.flatten; _slim_codeattributes7.map!(&:to_s); _slim_codeattributes7.reject!(&:empty?); _temple_html_attributeremover2 << (_slim_codeattributes7.join(" ")); else; _temple_html_attributeremover2 << (_slim_codeattributes7); end; _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover2); _buf << ("\""); end; _buf << (" role=\"doc-toc\"><h2 id=\"toc-title\">"); 
-      ; _buf << ((document.attr 'toc-title')); 
-      ; _buf << ("</h2>"); 
-      ; _buf << (converter.convert document, 'outline'); 
-      ; _buf << ("</nav>"); 
+      ; _buf << ("<time id=\"revdate\"".freeze); _slim_codeattributes6 = revdate_iso; if _slim_codeattributes6; if _slim_codeattributes6 == true; _buf << (" datetime".freeze); else; _buf << (" datetime=\"".freeze); _buf << ((_slim_codeattributes6).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << (((attr :revdate)).to_s); 
+      ; _buf << ("</time>".freeze); end; if attr? :revremark; 
+      ; _buf << ("<br><span id=\"revremark\">".freeze); 
+      ; _buf << (((attr :revremark)).to_s); 
+      ; _buf << ("</span>".freeze); end; _buf << ("</div>".freeze); end; end; if (attr? :toc) && (attr? 'toc-placement', 'auto'); 
+      ; _buf << ("<nav id=\"toc\"".freeze); _temple_html_attributeremover2 = ''; _slim_codeattributes7 = (document.attr 'toc-class', 'toc'); if Array === _slim_codeattributes7; _slim_codeattributes7 = _slim_codeattributes7.flatten; _slim_codeattributes7.map!(&:to_s); _slim_codeattributes7.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes7.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes7).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover2).to_s); _buf << ("\"".freeze); end; _buf << (" role=\"doc-toc\"><h2 id=\"toc-title\">".freeze); 
+      ; _buf << (((document.attr 'toc-title')).to_s); 
+      ; _buf << ("</h2>".freeze); 
+      ; _buf << ((converter.convert document, 'outline').to_s); 
+      ; _buf << ("</nav>".freeze); 
       ; end; 
-      ; _buf << ("</header>"); end; _buf << ("<div id=\"content\">"); _buf << (document_content); 
-      ; _buf << ("</div>"); unless !footnotes? || (attr? :nofootnotes); 
-      ; _buf << ("<section class=\"footnotes\" aria-label=\"Footnotes\" role=\"doc-endnotes\"><hr><ol class=\"footnotes\">"); 
+      ; _buf << ("</header>".freeze); end; _buf << ("<div id=\"content\">".freeze); _buf << ((document_content).to_s); 
+      ; _buf << ("</div>".freeze); unless !footnotes? || (attr? :nofootnotes); 
+      ; _buf << ("<section class=\"footnotes\" aria-label=\"Footnotes\" role=\"doc-endnotes\"><hr><ol class=\"footnotes\">".freeze); 
       ; 
       ; 
       ; footnotes.each do |fn|; 
-      ; _buf << ("<li class=\"footnote\""); _slim_codeattributes8 = (footnote_id fn.index); if _slim_codeattributes8; if _slim_codeattributes8 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes8); _buf << ("\""); end; end; _buf << (" role=\"doc-endnote\">"); 
-      ; _buf << ("#{fn.text} "); 
+      ; _buf << ("<li class=\"footnote\"".freeze); _slim_codeattributes8 = (footnote_id fn.index); if _slim_codeattributes8; if _slim_codeattributes8 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes8).to_s); _buf << ("\"".freeze); end; end; _buf << (" role=\"doc-endnote\">".freeze); 
+      ; _buf << (("#{fn.text} ").to_s); 
       ; 
       ; 
       ; 
-      ; _buf << ("<a class=\"footnote-backref\" href=\"#"); _buf << (footnoteref_id fn.index); _buf << ("\" role=\"doc-backlink\" title=\"Jump to the first occurrence in the text\">&#8617;</a></li>"); 
+      ; _buf << ("<a class=\"footnote-backref\" href=\"#".freeze); _buf << ((footnoteref_id fn.index).to_s); _buf << ("\" role=\"doc-backlink\" title=\"Jump to the first occurrence in the text\">&#8617;</a></li>".freeze); 
       ; 
-      ; end; _buf << ("</ol></section>"); 
+      ; end; _buf << ("</ol></section>".freeze); 
       ; end; unless nofooter; 
-      ; _buf << ("<footer><div id=\"footer-text\">"); 
+      ; _buf << ("<footer><div id=\"footer-text\">".freeze); 
       ; 
       ; if attr? :revnumber; 
-      ; _buf << (attr 'version-label'); _buf << (" "); _buf << (attr :revnumber); 
+      ; _buf << ((attr 'version-label').to_s); _buf << (" ".freeze); _buf << ((attr :revnumber).to_s); 
       ; end; if attr? 'last-update-label'; 
-      ; _buf << ("<br>"); 
-      ; _buf << (attr 'last-update-label'); _buf << (" "); _buf << (attr :docdatetime); 
-      ; end; _buf << ("</div>"); unless (docinfo_content = (docinfo :footer)).empty?; 
-      ; _buf << (docinfo_content); 
+      ; _buf << ("<br>".freeze); 
+      ; _buf << ((attr 'last-update-label').to_s); _buf << (" ".freeze); _buf << ((attr :docdatetime).to_s); 
+      ; end; _buf << ("</div>".freeze); unless (docinfo_content = (docinfo :footer)).empty?; 
+      ; _buf << ((docinfo_content).to_s); 
       ; end; 
-      ; _buf << ("</footer>"); end; _buf << ("</body></html>"); _buf = _buf.join("")
+      ; _buf << ("</footer>".freeze); end; _buf << ("</body></html>".freeze); _buf
     end
   end
 
   def embedded(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; if !notitle && header?; 
-      ; _buf << ("<h1"); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _buf << (">"); _buf << (header.title); 
-      ; _buf << ("</h1>"); end; if node.sections? && (attr? :toc) && (attr 'toc-placement', 'auto') == 'auto'; 
-      ; _buf << ("<nav id=\"toc\""); _temple_html_attributeremover1 = []; _slim_codeattributes2 = (document.attr 'toc-class', 'toc'); if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes2.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes2); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << (" role=\"doc-toc\"><h2 id=\"toc-title\">"); 
-      ; _buf << ((document.attr 'toc-title')); 
-      ; _buf << ("</h2>"); 
-      ; _buf << (converter.convert document, 'outline'); 
-      ; _buf << ("</nav>"); 
-      ; end; _buf << (content); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; if !notitle && header?; 
+      ; _buf << ("<h1".freeze); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << ((header.title).to_s); 
+      ; _buf << ("</h1>".freeze); end; if node.sections? && (attr? :toc) && (attr 'toc-placement', 'auto') == 'auto'; 
+      ; _buf << ("<nav id=\"toc\"".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes2 = (document.attr 'toc-class', 'toc'); if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes2).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << (" role=\"doc-toc\"><h2 id=\"toc-title\">".freeze); 
+      ; _buf << (((document.attr 'toc-title')).to_s); 
+      ; _buf << ("</h2>".freeze); 
+      ; _buf << ((converter.convert document, 'outline').to_s); 
+      ; _buf << ("</nav>".freeze); 
+      ; end; _buf << ((content).to_s); 
       ; if footnotes? && !(attr? :nofootnotes); 
-      ; _buf << ("<section class=\"footnotes\" aria-label=\"Footnotes\" role=\"doc-endnotes\"><hr><ol class=\"footnotes\">"); 
+      ; _buf << ("<section class=\"footnotes\" aria-label=\"Footnotes\" role=\"doc-endnotes\"><hr><ol class=\"footnotes\">".freeze); 
       ; 
       ; 
       ; footnotes.each do |fn|; 
-      ; _buf << ("<li class=\"footnote\""); _slim_codeattributes3 = (footnote_id fn.index); if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes3); _buf << ("\""); end; end; _buf << (" role=\"doc-endnote\">"); 
-      ; _buf << ("#{fn.text} "); 
+      ; _buf << ("<li class=\"footnote\"".freeze); _slim_codeattributes3 = (footnote_id fn.index); if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _buf << (" role=\"doc-endnote\">".freeze); 
+      ; _buf << (("#{fn.text} ").to_s); 
       ; 
       ; 
       ; 
-      ; _buf << ("<a class=\"footnote-backref\" href=\"#"); _buf << (footnoteref_id fn.index); _buf << ("\" role=\"doc-backlink\" title=\"Jump to the first occurrence in the text\">&#8617;</a></li>"); 
+      ; _buf << ("<a class=\"footnote-backref\" href=\"#".freeze); _buf << ((footnoteref_id fn.index).to_s); _buf << ("\" role=\"doc-backlink\" title=\"Jump to the first occurrence in the text\">&#8617;</a></li>".freeze); 
       ; 
-      ; end; _buf << ("</ol></section>"); 
-      ; end; _buf = _buf.join("")
+      ; end; _buf << ("</ol></section>".freeze); 
+      ; end; _buf
     end
   end
 
   def empty(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; ; _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; ; _buf
     end
   end
 
   def example(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; if option? :collapsible; 
-      ; _buf << ("<details"); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _temple_html_attributeremover1 = []; _slim_codeattributes2 = role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes2.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes2); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _slim_codeattributes3 = (option? :open); if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" open"); else; _buf << (" open=\""); _buf << (_slim_codeattributes3); _buf << ("\""); end; end; _buf << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; if option? :collapsible; 
+      ; _buf << ("<details".freeze); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover1 = ''; _slim_codeattributes2 = role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes2).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _slim_codeattributes3 = (option? :open); if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" open".freeze); else; _buf << (" open=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
       ; if title; 
-      ; _buf << ("<summary>"); 
-      ; _buf << (title); 
-      ; _buf << ("</summary>"); end; _buf << ("<div class=\"content\">"); 
-      ; _buf << (content); 
-      ; _buf << ("</div></details>"); else; 
-      ; _slim_controls1 = block_with_caption :top, :class=>'example-block' do; _slim_controls2 = []; 
-      ; _slim_controls2 << ("<div class=\"example\">"); 
-      ; _slim_controls2 << (content); 
-      ; _slim_controls2 << ("</div>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); end; _buf = _buf.join("")
+      ; _buf << ("<summary>".freeze); 
+      ; _buf << ((title).to_s); 
+      ; _buf << ("</summary>".freeze); end; _buf << ("<div class=\"content\">".freeze); 
+      ; _buf << ((content).to_s); 
+      ; _buf << ("</div></details>".freeze); else; 
+      ; _slim_controls1 = block_with_caption :top, :class=>'example-block' do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ("<div class=\"example\">".freeze); 
+      ; _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2 << ("</div>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); end; _buf
     end
   end
 
   def floating_title(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_htag_filter1 = ((level + 1)).to_s; _buf << ("<h"); _buf << (_slim_htag_filter1); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _temple_html_attributeremover1 = []; _slim_codeattributes2 = [style, role]; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes2.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes2); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << (">"); 
-      ; _buf << (title); 
-      ; _buf << ("</h"); _buf << (_slim_htag_filter1); _buf << (">"); _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_htag_filter1 = ((level + 1)).to_s; _buf << ("<h".freeze); _buf << ((_slim_htag_filter1).to_s); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover1 = ''; _slim_codeattributes2 = [style, role]; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes2).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); 
+      ; _buf << ((title).to_s); 
+      ; _buf << ("</h".freeze); _buf << ((_slim_htag_filter1).to_s); _buf << (">".freeze); _buf
     end
   end
 
   def image(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_caption(:bottom, :class=>'image-block', :style=>style_value(text_align: (attr :align), float: (attr :float))) do; _slim_controls2 = []; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_caption(:bottom, :class=>'image-block', :style=>style_value(text_align: (attr :align), float: (attr :float))) do; _slim_controls2 = ''; 
       ; target_url = image_uri(attr :target); 
       ; _slim_controls3 = html_tag_if(image_link, :a,
       :class=>['image', ('bare' if image_link == target_url)],
@@ -1034,471 +1044,500 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
       :title=>image_link_label,
       'aria-label'=>image_link_label,
       :target=>(attr :window),
-      :rel=>link_rel) do; _slim_controls4 = []; 
-      ; _slim_controls4 << ("<img"); _slim_codeattributes1 = target_url; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls4 << (" src"); else; _slim_controls4 << (" src=\""); _slim_controls4 << (_slim_codeattributes1); _slim_controls4 << ("\""); end; end; _slim_codeattributes2 = (attr :alt); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls4 << (" alt"); else; _slim_controls4 << (" alt=\""); _slim_controls4 << (_slim_codeattributes2); _slim_controls4 << ("\""); end; end; _slim_codeattributes3 = (attr :width); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls4 << (" width"); else; _slim_controls4 << (" width=\""); _slim_controls4 << (_slim_codeattributes3); _slim_controls4 << ("\""); end; end; _slim_codeattributes4 = (attr :height); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls4 << (" height"); else; _slim_controls4 << (" height=\""); _slim_controls4 << (_slim_codeattributes4); _slim_controls4 << ("\""); end; end; _slim_codeattributes5 = (attr :loading); if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls4 << (" loading"); else; _slim_controls4 << (" loading=\""); _slim_controls4 << (_slim_codeattributes5); _slim_controls4 << ("\""); end; end; _slim_controls4 << (">"); 
-      ; _slim_controls4 = _slim_controls4.join(""); end; _slim_controls2 << (_slim_controls3); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      :rel=>link_rel) do; _slim_controls4 = ''; 
+      ; _slim_controls4 << ("<img".freeze); _slim_codeattributes1 = target_url; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls4 << (" src".freeze); else; _slim_controls4 << (" src=\"".freeze); _slim_controls4 << ((_slim_codeattributes1).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_codeattributes2 = (attr :alt); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls4 << (" alt".freeze); else; _slim_controls4 << (" alt=\"".freeze); _slim_controls4 << ((_slim_codeattributes2).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_codeattributes3 = (attr :width); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls4 << (" width".freeze); else; _slim_controls4 << (" width=\"".freeze); _slim_controls4 << ((_slim_codeattributes3).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_codeattributes4 = (attr :height); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls4 << (" height".freeze); else; _slim_controls4 << (" height=\"".freeze); _slim_controls4 << ((_slim_codeattributes4).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_codeattributes5 = (attr :loading); if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls4 << (" loading".freeze); else; _slim_controls4 << (" loading=\"".freeze); _slim_controls4 << ((_slim_codeattributes5).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_controls4 << (">".freeze); 
+      ; _slim_controls4; end; _slim_controls2 << ((_slim_controls3).to_s); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def inline_anchor(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; case type; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; case type; 
       ; when :xref; 
-      ; _buf << ("<a"); _slim_codeattributes1 = target; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" href"); else; _buf << (" href=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _temple_html_attributeremover1 = []; _slim_codeattributes2 = role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes2.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes2); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << (">"); _buf << (xref_text); 
-      ; _buf << ("</a>"); when :ref; 
-      ; _buf << ("<a"); _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes3); _buf << ("\""); end; end; _buf << (" aria-hidden=\"true\"></a>"); 
+      ; _buf << ("<a".freeze); _slim_codeattributes1 = target; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" href".freeze); else; _buf << (" href=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover1 = ''; _slim_codeattributes2 = role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes2).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((xref_text).to_s); 
+      ; _buf << ("</a>".freeze); when :ref; 
+      ; _buf << ("<a".freeze); _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _buf << (" aria-hidden=\"true\"></a>".freeze); 
       ; when :bibref; 
-      ; _buf << ("<a"); _slim_codeattributes4 = id; if _slim_codeattributes4; if _slim_codeattributes4 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes4); _buf << ("\""); end; end; _buf << (" aria-hidden=\"true\"></a>"); 
-      ; _buf << (bibref_text); 
+      ; _buf << ("<a".freeze); _slim_codeattributes4 = id; if _slim_codeattributes4; if _slim_codeattributes4 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes4).to_s); _buf << ("\"".freeze); end; end; _buf << (" aria-hidden=\"true\"></a>".freeze); 
+      ; _buf << ((bibref_text).to_s); 
       ; else; 
-      ; _buf << ("<a"); _slim_codeattributes5 = id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes5); _buf << ("\""); end; end; _temple_html_attributeremover2 = []; _slim_codeattributes6 = role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover2 << (_slim_codeattributes6.join(" ")); else; _temple_html_attributeremover2 << (_slim_codeattributes6); end; _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover2); _buf << ("\""); end; _slim_codeattributes7 = target; if _slim_codeattributes7; if _slim_codeattributes7 == true; _buf << (" href"); else; _buf << (" href=\""); _buf << (_slim_codeattributes7); _buf << ("\""); end; end; _slim_codeattributes8 = (attr :window); if _slim_codeattributes8; if _slim_codeattributes8 == true; _buf << (" target"); else; _buf << (" target=\""); _buf << (_slim_codeattributes8); _buf << ("\""); end; end; _slim_codeattributes9 = link_rel; if _slim_codeattributes9; if _slim_codeattributes9 == true; _buf << (" rel"); else; _buf << (" rel=\""); _buf << (_slim_codeattributes9); _buf << ("\""); end; end; _slim_codeattributes10 = (attr :title); if _slim_codeattributes10; if _slim_codeattributes10 == true; _buf << (" title"); else; _buf << (" title=\""); _buf << (_slim_codeattributes10); _buf << ("\""); end; end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</a>"); end; _buf = _buf.join("")
+      ; _buf << ("<a".freeze); _slim_codeattributes5 = id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes5).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover2 = ''; _slim_codeattributes6 = role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes6.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes6).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover2).to_s); _buf << ("\"".freeze); end; _slim_codeattributes7 = target; if _slim_codeattributes7; if _slim_codeattributes7 == true; _buf << (" href".freeze); else; _buf << (" href=\"".freeze); _buf << ((_slim_codeattributes7).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes8 = (attr :window); if _slim_codeattributes8; if _slim_codeattributes8 == true; _buf << (" target".freeze); else; _buf << (" target=\"".freeze); _buf << ((_slim_codeattributes8).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes9 = link_rel; if _slim_codeattributes9; if _slim_codeattributes9 == true; _buf << (" rel".freeze); else; _buf << (" rel=\"".freeze); _buf << ((_slim_codeattributes9).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes10 = (attr :title); if _slim_codeattributes10; if _slim_codeattributes10 == true; _buf << (" title".freeze); else; _buf << (" title=\"".freeze); _buf << ((_slim_codeattributes10).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</a>".freeze); end; _buf
     end
   end
 
   def inline_break(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << (text); 
-      ; _buf << ("<br>"); 
-      ; _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ((text).to_s); 
+      ; _buf << ("<br>".freeze); 
+      ; _buf
     end
   end
 
   def inline_button(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << ("<kbd class=\"button\"><samp>"); 
-      ; _buf << (text); 
-      ; _buf << ("</samp></kbd>"); _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ("<kbd class=\"button\"><samp>".freeze); 
+      ; _buf << ((text).to_s); 
+      ; _buf << ("</samp></kbd>".freeze); _buf
     end
   end
 
   def inline_callout(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << ("<b class=\"conum\""); _slim_codeattributes1 = text; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" data-value"); else; _buf << (" data-value=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</b>"); _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ("<b class=\"conum\"".freeze); _slim_codeattributes1 = text; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" data-value".freeze); else; _buf << (" data-value=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</b>".freeze); _buf
     end
   end
 
   def inline_footnote(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; if (index = local_attr :index); 
-      ; _buf << ("<sup><a class=\"footnote-ref\""); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; if (index = local_attr :index); 
+      ; _buf << ("<sup><a class=\"footnote-ref\"".freeze); 
       ; 
       ; 
       ; 
       ; 
-      ; _slim_codeattributes1 = (footnoteref_id unless type == :xref); if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _buf << (" href=\"#"); _buf << (footnote_id); _buf << ("\" title=\"View footnote "); _buf << (index); _buf << ("\" role=\"doc-noteref\">"); 
-      ; _buf << (index); 
-      ; _buf << ("</a></sup>"); else; 
-      ; _buf << ("<a class=\"footnote-ref broken\" title=\"Unresolved footnote reference.\">["); _buf << (text); _buf << ("]</a>"); 
-      ; end; _buf = _buf.join("")
+      ; _slim_codeattributes1 = (footnoteref_id unless type == :xref); if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _buf << (" href=\"#".freeze); _buf << ((footnote_id).to_s); _buf << ("\"".freeze); _slim_codeattributes2 = ((document.attr 'view-footnote', "View footnote") + " #{index}"); if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" title".freeze); else; _buf << (" title=\"".freeze); _buf << ((_slim_codeattributes2).to_s); _buf << ("\"".freeze); end; end; _buf << (" role=\"doc-noteref\">".freeze); 
+      ; _buf << ((index).to_s); 
+      ; _buf << ("</a></sup>".freeze); else; 
+      ; _buf << ("<a class=\"footnote-ref broken\" title=\"Unresolved footnote reference.\">[".freeze); _buf << ((text).to_s); _buf << ("]</a>".freeze); 
+      ; end; _buf
     end
   end
 
   def inline_image(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = html_tag_if((attr? :link), :a, :class=>'image', :href=>(attr :link), :target=>(attr :window), :rel=>link_rel) do; _slim_controls2 = []; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = html_tag_if((attr? :link), :a, :class=>'image', :href=>(attr :link), :target=>(attr :window), :rel=>link_rel) do; _slim_controls2 = ''; 
       ; if type == 'icon' && (document.attr? :icons, 'font'); 
-      ; _slim_controls2 << ("<i"); _temple_html_attributeremover1 = []; _slim_codeattributes1 = [*icon_fa_classes, role]; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes1.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes1); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover1); _slim_controls2 << ("\""); end; _slim_codeattributes2 = (attr :title); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" title"); else; _slim_controls2 << (" title=\""); _slim_controls2 << (_slim_codeattributes2); _slim_controls2 << ("\""); end; end; _slim_controls2 << ("></i>"); 
+      ; _slim_controls2 << ("<i".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes1 = [*icon_fa_classes, role]; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes1).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover1).to_s); _slim_controls2 << ("\"".freeze); end; _slim_codeattributes2 = (attr :title); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" title".freeze); else; _slim_controls2 << (" title=\"".freeze); _slim_controls2 << ((_slim_codeattributes2).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << ("></i>".freeze); 
       ; elsif type == 'icon' && !(document.attr? :icons); 
-      ; _slim_controls2 << ("<b"); _temple_html_attributeremover2 = []; _slim_codeattributes3 = ['icon', role]; if Array === _slim_codeattributes3; _slim_codeattributes3 = _slim_codeattributes3.flatten; _slim_codeattributes3.map!(&:to_s); _slim_codeattributes3.reject!(&:empty?); _temple_html_attributeremover2 << (_slim_codeattributes3.join(" ")); else; _temple_html_attributeremover2 << (_slim_codeattributes3); end; _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover2); _slim_controls2 << ("\""); end; _slim_codeattributes4 = (attr :title); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" title"); else; _slim_controls2 << (" title=\""); _slim_controls2 << (_slim_codeattributes4); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">["); 
-      ; _slim_controls2 << (attr :alt); _slim_controls2 << ("]</b>"); 
+      ; _slim_controls2 << ("<b".freeze); _temple_html_attributeremover2 = ''; _slim_codeattributes3 = ['icon', role]; if Array === _slim_codeattributes3; _slim_codeattributes3 = _slim_codeattributes3.flatten; _slim_codeattributes3.map!(&:to_s); _slim_codeattributes3.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes3.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes3).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover2).to_s); _slim_controls2 << ("\"".freeze); end; _slim_codeattributes4 = (attr :title); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" title".freeze); else; _slim_controls2 << (" title=\"".freeze); _slim_controls2 << ((_slim_codeattributes4).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">[".freeze); 
+      ; _slim_controls2 << ((attr :alt).to_s); _slim_controls2 << ("]</b>".freeze); 
       ; else; 
       ; 
       ; 
-      ; _slim_controls2 << ("<img"); _slim_codeattributes5 = (type == 'icon' ? (icon_uri target) : (image_uri target)); if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls2 << (" src"); else; _slim_controls2 << (" src=\""); _slim_controls2 << (_slim_codeattributes5); _slim_controls2 << ("\""); end; end; _slim_codeattributes6 = (attr :alt); if _slim_codeattributes6; if _slim_codeattributes6 == true; _slim_controls2 << (" alt"); else; _slim_controls2 << (" alt=\""); _slim_controls2 << (_slim_codeattributes6); _slim_controls2 << ("\""); end; end; _slim_codeattributes7 = (attr :width); if _slim_codeattributes7; if _slim_codeattributes7 == true; _slim_controls2 << (" width"); else; _slim_controls2 << (" width=\""); _slim_controls2 << (_slim_codeattributes7); _slim_controls2 << ("\""); end; end; _slim_codeattributes8 = (attr :height); if _slim_codeattributes8; if _slim_codeattributes8 == true; _slim_controls2 << (" height"); else; _slim_controls2 << (" height=\""); _slim_controls2 << (_slim_codeattributes8); _slim_controls2 << ("\""); end; end; _slim_codeattributes9 = (attr :title); if _slim_codeattributes9; if _slim_codeattributes9 == true; _slim_controls2 << (" title"); else; _slim_controls2 << (" title=\""); _slim_controls2 << (_slim_codeattributes9); _slim_controls2 << ("\""); end; end; _slim_codeattributes10 = (attr :loading); if _slim_codeattributes10; if _slim_codeattributes10 == true; _slim_controls2 << (" loading"); else; _slim_controls2 << (" loading=\""); _slim_controls2 << (_slim_codeattributes10); _slim_controls2 << ("\""); end; end; _temple_html_attributeremover3 = []; _slim_codeattributes11 = [(type if type != 'image'), role]; if Array === _slim_codeattributes11; _slim_codeattributes11 = _slim_codeattributes11.flatten; _slim_codeattributes11.map!(&:to_s); _slim_codeattributes11.reject!(&:empty?); _temple_html_attributeremover3 << (_slim_codeattributes11.join(" ")); else; _temple_html_attributeremover3 << (_slim_codeattributes11); end; _temple_html_attributeremover3 = _temple_html_attributeremover3.join(""); if !_temple_html_attributeremover3.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover3); _slim_controls2 << ("\""); end; _slim_codeattributes12 = style_value(float: (attr :float)); if _slim_codeattributes12; if _slim_codeattributes12 == true; _slim_controls2 << (" style"); else; _slim_controls2 << (" style=\""); _slim_controls2 << (_slim_codeattributes12); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">"); 
-      ; end; _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls2 << ("<img".freeze); _slim_codeattributes5 = (type == 'icon' ? (icon_uri target) : (image_uri target)); if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls2 << (" src".freeze); else; _slim_controls2 << (" src=\"".freeze); _slim_controls2 << ((_slim_codeattributes5).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes6 = (attr :alt); if _slim_codeattributes6; if _slim_codeattributes6 == true; _slim_controls2 << (" alt".freeze); else; _slim_controls2 << (" alt=\"".freeze); _slim_controls2 << ((_slim_codeattributes6).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes7 = (attr :width); if _slim_codeattributes7; if _slim_codeattributes7 == true; _slim_controls2 << (" width".freeze); else; _slim_controls2 << (" width=\"".freeze); _slim_controls2 << ((_slim_codeattributes7).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes8 = (attr :height); if _slim_codeattributes8; if _slim_codeattributes8 == true; _slim_controls2 << (" height".freeze); else; _slim_controls2 << (" height=\"".freeze); _slim_controls2 << ((_slim_codeattributes8).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes9 = (attr :title); if _slim_codeattributes9; if _slim_codeattributes9 == true; _slim_controls2 << (" title".freeze); else; _slim_controls2 << (" title=\"".freeze); _slim_controls2 << ((_slim_codeattributes9).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes10 = (attr :loading); if _slim_codeattributes10; if _slim_codeattributes10 == true; _slim_controls2 << (" loading".freeze); else; _slim_controls2 << (" loading=\"".freeze); _slim_controls2 << ((_slim_codeattributes10).to_s); _slim_controls2 << ("\"".freeze); end; end; _temple_html_attributeremover3 = ''; _slim_codeattributes11 = [(type if type != 'image'), role]; if Array === _slim_codeattributes11; _slim_codeattributes11 = _slim_codeattributes11.flatten; _slim_codeattributes11.map!(&:to_s); _slim_codeattributes11.reject!(&:empty?); _temple_html_attributeremover3 << ((_slim_codeattributes11.join(" ")).to_s); else; _temple_html_attributeremover3 << ((_slim_codeattributes11).to_s); end; _temple_html_attributeremover3; if !_temple_html_attributeremover3.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover3).to_s); _slim_controls2 << ("\"".freeze); end; _slim_codeattributes12 = style_value(float: (attr :float)); if _slim_codeattributes12; if _slim_codeattributes12 == true; _slim_controls2 << (" style".freeze); else; _slim_controls2 << (" style=\"".freeze); _slim_controls2 << ((_slim_codeattributes12).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">".freeze); 
+      ; end; _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def inline_indexterm(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; if type == :visible; 
-      ; _buf << (text); 
-      ; end; _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; if type == :visible; 
+      ; _buf << ((text).to_s); 
+      ; end; _buf
     end
   end
 
   def inline_kbd(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; if (keys = attr 'keys').size == 1; 
-      ; _buf << ("<kbd class=\"key\">"); _buf << (keys.first); 
-      ; _buf << ("</kbd>"); else; 
-      ; _buf << ("<kbd class=\"keyseq\">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; if (keys = attr 'keys').size == 1; 
+      ; _buf << ("<kbd class=\"key\">".freeze); _buf << ((keys.first).to_s); 
+      ; _buf << ("</kbd>".freeze); else; 
+      ; _buf << ("<kbd class=\"keyseq\">".freeze); 
       ; keys.each_with_index do |key, idx|; 
-      ; _buf << ("+" unless idx.zero?); 
-      ; _buf << ("<kbd class=\"key\">"); _buf << (key); 
-      ; _buf << ("</kbd>"); end; _buf << ("</kbd>"); end; _buf = _buf.join("")
+      ; _buf << (("+" unless idx.zero?).to_s); 
+      ; _buf << ("<kbd class=\"key\">".freeze); _buf << ((key).to_s); 
+      ; _buf << ("</kbd>".freeze); end; _buf << ("</kbd>".freeze); end; _buf
     end
   end
 
   def inline_menu(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; if local_attr :menuitem; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; if local_attr :menuitem; 
       ; capture do; 
-      ; _buf << ("&#160;<span class=\"caret\">&#8250;</span>&#32;"); 
+      ; _buf << ("&#160;<span class=\"caret\">&#8250;</span>&#32;".freeze); 
       ; 
       ; 
-      ; end; _buf << ("<kbd class=\"menuseq\"><kbd class=\"menu\"><samp>"); 
+      ; end; _buf << ("<kbd class=\"menuseq\"><kbd class=\"menu\"><samp>".freeze); 
       ; 
-      ; _buf << ((attr :menu)); 
-      ; _buf << ("</samp></kbd>"); yield_capture; 
+      ; _buf << (((attr :menu)).to_s); 
+      ; _buf << ("</samp></kbd>".freeze); yield_capture; 
       ; (attr 'submenus').each do |submenu|; 
-      ; _buf << ("<kbd class=\"menu\"><samp>"); 
-      ; _buf << (submenu); 
-      ; _buf << ("</samp></kbd>"); yield_capture; 
-      ; end; _buf << ("<kbd class=\"menu\"><samp>"); 
-      ; _buf << ((local_attr :menuitem)); 
-      ; _buf << ("</samp></kbd></kbd>"); else; 
-      ; _buf << ("<kbd class=\"menu\"><samp>"); 
-      ; _buf << ((attr :menu)); 
-      ; _buf << ("</samp></kbd>"); end; _buf = _buf.join("")
+      ; _buf << ("<kbd class=\"menu\"><samp>".freeze); 
+      ; _buf << ((submenu).to_s); 
+      ; _buf << ("</samp></kbd>".freeze); yield_capture; 
+      ; end; _buf << ("<kbd class=\"menu\"><samp>".freeze); 
+      ; _buf << (((local_attr :menuitem)).to_s); 
+      ; _buf << ("</samp></kbd></kbd>".freeze); else; 
+      ; _buf << ("<kbd class=\"menu\"><samp>".freeze); 
+      ; _buf << (((attr :menu)).to_s); 
+      ; _buf << ("</samp></kbd>".freeze); end; _buf
     end
   end
 
   def inline_quoted(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; case type; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; case type; 
       ; when :emphasis; 
-      ; _buf << ("<em"); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _temple_html_attributeremover1 = []; _slim_codeattributes2 = role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes2.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes2); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</em>"); when :strong; 
-      ; _buf << ("<strong"); _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes3); _buf << ("\""); end; end; _temple_html_attributeremover2 = []; _slim_codeattributes4 = role; if Array === _slim_codeattributes4; _slim_codeattributes4 = _slim_codeattributes4.flatten; _slim_codeattributes4.map!(&:to_s); _slim_codeattributes4.reject!(&:empty?); _temple_html_attributeremover2 << (_slim_codeattributes4.join(" ")); else; _temple_html_attributeremover2 << (_slim_codeattributes4); end; _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover2); _buf << ("\""); end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</strong>"); when :monospaced; 
-      ; _buf << ("<code"); _slim_codeattributes5 = id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes5); _buf << ("\""); end; end; _temple_html_attributeremover3 = []; _slim_codeattributes6 = role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover3 << (_slim_codeattributes6.join(" ")); else; _temple_html_attributeremover3 << (_slim_codeattributes6); end; _temple_html_attributeremover3 = _temple_html_attributeremover3.join(""); if !_temple_html_attributeremover3.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover3); _buf << ("\""); end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</code>"); when :superscript; 
-      ; _buf << ("<sup"); _slim_codeattributes7 = id; if _slim_codeattributes7; if _slim_codeattributes7 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes7); _buf << ("\""); end; end; _temple_html_attributeremover4 = []; _slim_codeattributes8 = role; if Array === _slim_codeattributes8; _slim_codeattributes8 = _slim_codeattributes8.flatten; _slim_codeattributes8.map!(&:to_s); _slim_codeattributes8.reject!(&:empty?); _temple_html_attributeremover4 << (_slim_codeattributes8.join(" ")); else; _temple_html_attributeremover4 << (_slim_codeattributes8); end; _temple_html_attributeremover4 = _temple_html_attributeremover4.join(""); if !_temple_html_attributeremover4.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover4); _buf << ("\""); end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</sup>"); when :subscript; 
-      ; _buf << ("<sub"); _slim_codeattributes9 = id; if _slim_codeattributes9; if _slim_codeattributes9 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes9); _buf << ("\""); end; end; _temple_html_attributeremover5 = []; _slim_codeattributes10 = role; if Array === _slim_codeattributes10; _slim_codeattributes10 = _slim_codeattributes10.flatten; _slim_codeattributes10.map!(&:to_s); _slim_codeattributes10.reject!(&:empty?); _temple_html_attributeremover5 << (_slim_codeattributes10.join(" ")); else; _temple_html_attributeremover5 << (_slim_codeattributes10); end; _temple_html_attributeremover5 = _temple_html_attributeremover5.join(""); if !_temple_html_attributeremover5.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover5); _buf << ("\""); end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</sub>"); when :mark; 
-      ; _buf << ("<mark"); _slim_codeattributes11 = id; if _slim_codeattributes11; if _slim_codeattributes11 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes11); _buf << ("\""); end; end; _temple_html_attributeremover6 = []; _slim_codeattributes12 = role; if Array === _slim_codeattributes12; _slim_codeattributes12 = _slim_codeattributes12.flatten; _slim_codeattributes12.map!(&:to_s); _slim_codeattributes12.reject!(&:empty?); _temple_html_attributeremover6 << (_slim_codeattributes12.join(" ")); else; _temple_html_attributeremover6 << (_slim_codeattributes12); end; _temple_html_attributeremover6 = _temple_html_attributeremover6.join(""); if !_temple_html_attributeremover6.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover6); _buf << ("\""); end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</mark>"); when :double; 
-      ; _slim_controls1 = html_tag_if role? || id, :span, :id=>id, :class=>role do; _slim_controls2 = []; 
-      ; _slim_controls2 << ((double_quoted text)); 
-      ; _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); when :single; 
-      ; _slim_controls3 = html_tag_if role? || id, :span, :id=>id, :class=>role do; _slim_controls4 = []; 
-      ; _slim_controls4 << ((single_quoted text)); 
-      ; _slim_controls4 = _slim_controls4.join(""); end; _buf << (_slim_controls3); when :asciimath, :latexmath; 
-      ; _buf << ("<span class=\"math\""); _slim_codeattributes13 = id; if _slim_codeattributes13; if _slim_codeattributes13 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes13); _buf << ("\""); end; end; _slim_codeattributes14 = stem_lang; if _slim_codeattributes14; if _slim_codeattributes14 == true; _buf << (" data-lang"); else; _buf << (" data-lang=\""); _buf << (_slim_codeattributes14); _buf << ("\""); end; end; _buf << (">"); _buf << ((delimit_stem text, type)); 
-      ; _buf << ("</span>"); else; 
+      ; _buf << ("<em".freeze); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover1 = ''; _slim_codeattributes2 = role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes2).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</em>".freeze); when :strong; 
+      ; _buf << ("<strong".freeze); _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover2 = ''; _slim_codeattributes4 = role; if Array === _slim_codeattributes4; _slim_codeattributes4 = _slim_codeattributes4.flatten; _slim_codeattributes4.map!(&:to_s); _slim_codeattributes4.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes4.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes4).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover2).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</strong>".freeze); when :monospaced; 
+      ; _buf << ("<code".freeze); _slim_codeattributes5 = id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes5).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover3 = ''; _slim_codeattributes6 = role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover3 << ((_slim_codeattributes6.join(" ")).to_s); else; _temple_html_attributeremover3 << ((_slim_codeattributes6).to_s); end; _temple_html_attributeremover3; if !_temple_html_attributeremover3.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover3).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</code>".freeze); when :superscript; 
+      ; _buf << ("<sup".freeze); _slim_codeattributes7 = id; if _slim_codeattributes7; if _slim_codeattributes7 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes7).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover4 = ''; _slim_codeattributes8 = role; if Array === _slim_codeattributes8; _slim_codeattributes8 = _slim_codeattributes8.flatten; _slim_codeattributes8.map!(&:to_s); _slim_codeattributes8.reject!(&:empty?); _temple_html_attributeremover4 << ((_slim_codeattributes8.join(" ")).to_s); else; _temple_html_attributeremover4 << ((_slim_codeattributes8).to_s); end; _temple_html_attributeremover4; if !_temple_html_attributeremover4.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover4).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</sup>".freeze); when :subscript; 
+      ; _buf << ("<sub".freeze); _slim_codeattributes9 = id; if _slim_codeattributes9; if _slim_codeattributes9 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes9).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover5 = ''; _slim_codeattributes10 = role; if Array === _slim_codeattributes10; _slim_codeattributes10 = _slim_codeattributes10.flatten; _slim_codeattributes10.map!(&:to_s); _slim_codeattributes10.reject!(&:empty?); _temple_html_attributeremover5 << ((_slim_codeattributes10.join(" ")).to_s); else; _temple_html_attributeremover5 << ((_slim_codeattributes10).to_s); end; _temple_html_attributeremover5; if !_temple_html_attributeremover5.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover5).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</sub>".freeze); when :mark; 
+      ; _buf << ("<mark".freeze); _slim_codeattributes11 = id; if _slim_codeattributes11; if _slim_codeattributes11 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes11).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover6 = ''; _slim_codeattributes12 = role; if Array === _slim_codeattributes12; _slim_codeattributes12 = _slim_codeattributes12.flatten; _slim_codeattributes12.map!(&:to_s); _slim_codeattributes12.reject!(&:empty?); _temple_html_attributeremover6 << ((_slim_codeattributes12.join(" ")).to_s); else; _temple_html_attributeremover6 << ((_slim_codeattributes12).to_s); end; _temple_html_attributeremover6; if !_temple_html_attributeremover6.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover6).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</mark>".freeze); when :double; 
+      ; _slim_controls1 = html_tag_if role? || id, :span, :id=>id, :class=>role do; _slim_controls2 = ''; 
+      ; _slim_controls2 << (((double_quoted text)).to_s); 
+      ; _slim_controls2; end; _buf << ((_slim_controls1).to_s); when :single; 
+      ; _slim_controls3 = html_tag_if role? || id, :span, :id=>id, :class=>role do; _slim_controls4 = ''; 
+      ; _slim_controls4 << (((single_quoted text)).to_s); 
+      ; _slim_controls4; end; _buf << ((_slim_controls3).to_s); when :asciimath, :latexmath; 
+      ; _buf << ("<span class=\"math\"".freeze); _slim_codeattributes13 = id; if _slim_codeattributes13; if _slim_codeattributes13 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes13).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes14 = stem_lang; if _slim_codeattributes14; if _slim_codeattributes14 == true; _buf << (" data-lang".freeze); else; _buf << (" data-lang=\"".freeze); _buf << ((_slim_codeattributes14).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << (((delimit_stem text, type)).to_s); 
+      ; _buf << ("</span>".freeze); else; 
       ; case role; 
       ; when 'line-through', 'strike'; 
-      ; _buf << ("<s"); _slim_codeattributes15 = id; if _slim_codeattributes15; if _slim_codeattributes15 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes15); _buf << ("\""); end; end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</s>"); when 'del'; 
-      ; _buf << ("<del"); _slim_codeattributes16 = id; if _slim_codeattributes16; if _slim_codeattributes16 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes16); _buf << ("\""); end; end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</del>"); when 'ins'; 
-      ; _buf << ("<ins"); _slim_codeattributes17 = id; if _slim_codeattributes17; if _slim_codeattributes17 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes17); _buf << ("\""); end; end; _buf << (">"); _buf << (text); 
-      ; _buf << ("</ins>"); else; 
-      ; _slim_controls5 = html_tag_if role? || id, :span, :id=>id, :class=>role do; _slim_controls6 = []; 
-      ; _slim_controls6 << (text); 
-      ; _slim_controls6 = _slim_controls6.join(""); end; _buf << (_slim_controls5); end; end; _buf = _buf.join("")
+      ; _buf << ("<s".freeze); _slim_codeattributes15 = id; if _slim_codeattributes15; if _slim_codeattributes15 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes15).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</s>".freeze); when 'del'; 
+      ; _buf << ("<del".freeze); _slim_codeattributes16 = id; if _slim_codeattributes16; if _slim_codeattributes16 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes16).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</del>".freeze); when 'ins'; 
+      ; _buf << ("<ins".freeze); _slim_codeattributes17 = id; if _slim_codeattributes17; if _slim_codeattributes17 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes17).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << ((text).to_s); 
+      ; _buf << ("</ins>".freeze); else; 
+      ; _slim_controls5 = html_tag_if role? || id, :span, :id=>id, :class=>role do; _slim_controls6 = ''; 
+      ; _slim_controls6 << ((text).to_s); 
+      ; _slim_controls6; end; _buf << ((_slim_controls5).to_s); end; end; _buf
     end
   end
 
   def listing(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_caption :top, :class=>'listing-block' do; _slim_controls2 = []; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_caption :top, :class=>'listing-block' do; _slim_controls2 = ''; 
       ; if style == 'source'; 
       ; highlighter = document.attr('source-highlighter'); 
       ; 
       ; if defined?(::Asciidoctor::SyntaxHighlighter) && document.syntax_highlighter; 
-      ; _slim_controls2 << (formatted_source); 
+      ; _slim_controls2 << ((formatted_source).to_s); 
       ; 
       ; elsif highlighter == 'html-pipeline'; 
-      ; _slim_controls2 << ("<pre><code"); _slim_codeattributes1 = source_lang; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls2 << (" data-lang"); else; _slim_controls2 << (" data-lang=\""); _slim_controls2 << (_slim_codeattributes1); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">"); _slim_controls2 << (content); 
-      ; _slim_controls2 << ("</code></pre>"); else; 
+      ; _slim_controls2 << ("<pre><code".freeze); _slim_codeattributes1 = source_lang; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls2 << (" data-lang".freeze); else; _slim_controls2 << (" data-lang=\"".freeze); _slim_controls2 << ((_slim_codeattributes1).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">".freeze); _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2 << ("</code></pre>".freeze); else; 
       ; 
-      ; _slim_controls2 << ("<pre"); _temple_html_attributeremover1 = []; _slim_codeattributes2 = [highlighter, 'highlight', ('linenums' if attr? :linenums), nowrap?]; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes2.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes2); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover1); _slim_controls2 << ("\""); end; _slim_controls2 << ("><code"); 
-      ; _temple_html_attributeremover2 = []; _slim_codeattributes3 = source_code_class; if Array === _slim_codeattributes3; _slim_codeattributes3 = _slim_codeattributes3.flatten; _slim_codeattributes3.map!(&:to_s); _slim_codeattributes3.reject!(&:empty?); _temple_html_attributeremover2 << (_slim_codeattributes3.join(" ")); else; _temple_html_attributeremover2 << (_slim_codeattributes3); end; _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover2); _slim_controls2 << ("\""); end; _slim_codeattributes4 = source_lang; if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" data-lang"); else; _slim_controls2 << (" data-lang=\""); _slim_controls2 << (_slim_codeattributes4); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">"); _slim_controls2 << (content); 
-      ; _slim_controls2 << ("</code></pre>"); end; else; 
-      ; _slim_controls2 << ("<pre"); _temple_html_attributeremover3 = []; _slim_codeattributes5 = nowrap?; if Array === _slim_codeattributes5; _slim_codeattributes5 = _slim_codeattributes5.flatten; _slim_codeattributes5.map!(&:to_s); _slim_codeattributes5.reject!(&:empty?); _temple_html_attributeremover3 << (_slim_codeattributes5.join(" ")); else; _temple_html_attributeremover3 << (_slim_codeattributes5); end; _temple_html_attributeremover3 = _temple_html_attributeremover3.join(""); if !_temple_html_attributeremover3.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover3); _slim_controls2 << ("\""); end; _slim_controls2 << (">"); _slim_controls2 << (content); 
-      ; _slim_controls2 << ("</pre>"); 
+      ; _slim_controls2 << ("<pre".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes2 = [highlighter, 'highlight', ('linenums' if attr? :linenums), nowrap?]; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes2).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover1).to_s); _slim_controls2 << ("\"".freeze); end; _slim_controls2 << ("><code".freeze); 
+      ; _temple_html_attributeremover2 = ''; _slim_codeattributes3 = source_code_class; if Array === _slim_codeattributes3; _slim_codeattributes3 = _slim_codeattributes3.flatten; _slim_codeattributes3.map!(&:to_s); _slim_codeattributes3.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes3.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes3).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover2).to_s); _slim_controls2 << ("\"".freeze); end; _slim_codeattributes4 = source_lang; if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" data-lang".freeze); else; _slim_controls2 << (" data-lang=\"".freeze); _slim_controls2 << ((_slim_codeattributes4).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">".freeze); _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2 << ("</code></pre>".freeze); end; else; 
+      ; _slim_controls2 << ("<pre".freeze); _temple_html_attributeremover3 = ''; _slim_codeattributes5 = nowrap?; if Array === _slim_codeattributes5; _slim_codeattributes5 = _slim_codeattributes5.flatten; _slim_codeattributes5.map!(&:to_s); _slim_codeattributes5.reject!(&:empty?); _temple_html_attributeremover3 << ((_slim_codeattributes5.join(" ")).to_s); else; _temple_html_attributeremover3 << ((_slim_codeattributes5).to_s); end; _temple_html_attributeremover3; if !_temple_html_attributeremover3.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover3).to_s); _slim_controls2 << ("\"".freeze); end; _slim_controls2 << (">".freeze); _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2 << ("</pre>".freeze); 
       ; 
       ; end; if callout_list; 
-      ; _slim_controls2 << (converter.convert callout_list, 'colist'); 
-      ; end; _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls2 << ((converter.convert callout_list, 'colist').to_s); 
+      ; end; _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def literal(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_title :class=>'literal-block' do; _slim_controls2 = []; 
-      ; _slim_controls2 << ("<pre"); _temple_html_attributeremover1 = []; _slim_codeattributes1 = nowrap?; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes1.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes1); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover1); _slim_controls2 << ("\""); end; _slim_controls2 << (">"); _slim_controls2 << (content); 
-      ; _slim_controls2 << ("</pre>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_title :class=>'literal-block' do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ("<pre".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes1 = nowrap?; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes1).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover1).to_s); _slim_controls2 << ("\"".freeze); end; _slim_controls2 << (">".freeze); _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2 << ("</pre>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def olist(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_title :class=>['olist', style] do; _slim_controls2 = []; 
-      ; _slim_controls2 << ("<ol"); _temple_html_attributeremover1 = []; _slim_codeattributes1 = style; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes1.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes1); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover1); _slim_controls2 << ("\""); end; _slim_codeattributes2 = (attr :start); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" start"); else; _slim_controls2 << (" start=\""); _slim_controls2 << (_slim_codeattributes2); _slim_controls2 << ("\""); end; end; _slim_codeattributes3 = list_marker_keyword; if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" type"); else; _slim_controls2 << (" type=\""); _slim_controls2 << (_slim_codeattributes3); _slim_controls2 << ("\""); end; end; _slim_codeattributes4 = (option? 'reversed'); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" reversed"); else; _slim_controls2 << (" reversed=\""); _slim_controls2 << (_slim_codeattributes4); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_title :class=>['olist', style] do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ("<ol".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes1 = style; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes1).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover1).to_s); _slim_controls2 << ("\"".freeze); end; _slim_codeattributes2 = (attr :start); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" start".freeze); else; _slim_controls2 << (" start=\"".freeze); _slim_controls2 << ((_slim_codeattributes2).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes3 = list_marker_keyword; if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" type".freeze); else; _slim_controls2 << (" type=\"".freeze); _slim_controls2 << ((_slim_codeattributes3).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes4 = (option? 'reversed'); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" reversed".freeze); else; _slim_controls2 << (" reversed=\"".freeze); _slim_controls2 << ((_slim_codeattributes4).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">".freeze); 
       ; items.each do |item|; 
-      ; _slim_controls2 << ("<li"); _slim_codeattributes5 = item.id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls2 << (" id"); else; _slim_controls2 << (" id=\""); _slim_controls2 << (_slim_codeattributes5); _slim_controls2 << ("\""); end; end; _temple_html_attributeremover2 = []; _slim_codeattributes6 = item.role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover2 << (_slim_codeattributes6.join(" ")); else; _temple_html_attributeremover2 << (_slim_codeattributes6); end; _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover2); _slim_controls2 << ("\""); end; _slim_controls2 << (">"); _slim_controls2 << ((print_item_content item)); 
-      ; _slim_controls2 << ("</li>"); end; _slim_controls2 << ("</ol>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls2 << ("<li".freeze); _slim_codeattributes5 = item.id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls2 << (" id".freeze); else; _slim_controls2 << (" id=\"".freeze); _slim_controls2 << ((_slim_codeattributes5).to_s); _slim_controls2 << ("\"".freeze); end; end; _temple_html_attributeremover2 = ''; _slim_codeattributes6 = item.role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes6.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes6).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover2).to_s); _slim_controls2 << ("\"".freeze); end; _slim_controls2 << (">".freeze); _slim_controls2 << (((print_item_content item)).to_s); 
+      ; _slim_controls2 << ("</li>".freeze); end; _slim_controls2 << ("</ol>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def open(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; if style == 'abstract'; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; if style == 'abstract'; 
       ; if abstract_allowed?; 
-      ; _slim_controls1 = block_with_title :class=>'quote-block abstract' do; _slim_controls2 = []; 
-      ; _slim_controls2 << ("<blockquote>"); _slim_controls2 << (content); 
-      ; _slim_controls2 << ("</blockquote>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); end; elsif style != 'partintro' || partintro_allowed?; 
-      ; _slim_controls3 = block_with_title :class=>['open-block', (style if style != 'open')] do; _slim_controls4 = []; 
-      ; _slim_controls4 << ("<div class=\"content\">"); _slim_controls4 << (content); 
-      ; _slim_controls4 << ("</div>"); _slim_controls4 = _slim_controls4.join(""); end; _buf << (_slim_controls3); end; _buf = _buf.join("")
+      ; _slim_controls1 = block_with_title :class=>'quote-block abstract' do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ("<blockquote>".freeze); _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2 << ("</blockquote>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); end; elsif style != 'partintro' || partintro_allowed?; 
+      ; _slim_controls3 = block_with_title :class=>['open-block', (style if style != 'open')] do; _slim_controls4 = ''; 
+      ; _slim_controls4 << ("<div class=\"content\">".freeze); _slim_controls4 << ((content).to_s); 
+      ; _slim_controls4 << ("</div>".freeze); _slim_controls4; end; _buf << ((_slim_controls3).to_s); end; _buf
     end
   end
 
   def outline(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; unless sections.empty?; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; unless sections.empty?; 
       ; 
       ; toclevels ||= opts[:toclevels] || (document.attr 'toclevels', DEFAULT_TOCLEVELS).to_i; 
       ; slevel = section_level sections.first; 
-      ; _buf << ("<ol class=\"toc-list level-"); _buf << (slevel); _buf << ("\">"); 
+      ; _buf << ("<ol class=\"toc-list level-".freeze); _buf << ((slevel).to_s); _buf << ("\">".freeze); 
       ; sections.each do |sec|; 
-      ; _buf << ("<li><a href=\"#"); 
-      ; _buf << (sec.id); _buf << ("\">"); _buf << ((section_title sec, drop_anchors: true)); 
-      ; _buf << ("</a>"); if (sec.level < toclevels) && (child_toc = converter.convert sec, 'outline'); 
-      ; _buf << (child_toc); 
-      ; end; _buf << ("</li>"); end; _buf << ("</ol>"); end; _buf = _buf.join("")
+      ; _buf << ("<li><a href=\"#".freeze); 
+      ; _buf << ((sec.id).to_s); _buf << ("\">".freeze); _buf << (((section_title sec, drop_anchors: true)).to_s); 
+      ; _buf << ("</a>".freeze); if (sec.level < toclevels) && (child_toc = converter.convert sec, 'outline'); 
+      ; _buf << ((child_toc).to_s); 
+      ; end; _buf << ("</li>".freeze); end; _buf << ("</ol>".freeze); end; _buf
     end
   end
 
   def page_break(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << ("<div role=\"doc-pagebreak\" style=\"page-break-after: always;\"></div>"); 
-      ; _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ("<div role=\"doc-pagebreak\" style=\"page-break-after: always;\"></div>".freeze); 
+      ; _buf
     end
   end
 
   def paragraph(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; if title?; 
-      ; _buf << ("<section class=\"paragraph\""); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _buf << ("><h6 class=\"block-title\">"); 
-      ; _buf << (title); 
-      ; _buf << ("</h6><p"); _temple_html_attributeremover1 = []; _slim_codeattributes2 = role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes2.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes2); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << (">"); _buf << (content); 
-      ; _buf << ("</p></section>"); else; 
-      ; _buf << ("<p"); _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes3); _buf << ("\""); end; end; _temple_html_attributeremover2 = []; _slim_codeattributes4 = role; if Array === _slim_codeattributes4; _slim_codeattributes4 = _slim_codeattributes4.flatten; _slim_codeattributes4.map!(&:to_s); _slim_codeattributes4.reject!(&:empty?); _temple_html_attributeremover2 << (_slim_codeattributes4.join(" ")); else; _temple_html_attributeremover2 << (_slim_codeattributes4); end; _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover2); _buf << ("\""); end; _buf << (">"); _buf << (content); 
-      ; _buf << ("</p>"); end; _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; if title?; 
+      ; _buf << ("<section class=\"paragraph\"".freeze); _slim_codeattributes1 = id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _buf << ("><h6 class=\"block-title\">".freeze); 
+      ; _buf << ((title).to_s); 
+      ; _buf << ("</h6><p".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes2 = role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes2).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((content).to_s); 
+      ; _buf << ("</p></section>".freeze); else; 
+      ; _buf << ("<p".freeze); _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover2 = ''; _slim_codeattributes4 = role; if Array === _slim_codeattributes4; _slim_codeattributes4 = _slim_codeattributes4.flatten; _slim_codeattributes4.map!(&:to_s); _slim_codeattributes4.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes4.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes4).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover2).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); _buf << ((content).to_s); 
+      ; _buf << ("</p>".freeze); end; _buf
     end
   end
 
   def pass(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << (content); 
-      ; _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ((content).to_s); 
+      ; _buf
     end
   end
 
   def preamble(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << ("<section id=\"preamble\" aria-label=\"Preamble\">"); 
-      ; _buf << (content); 
-      ; _buf << ("</section>"); if (document.attr? :toc) && (document.attr? 'toc-placement', 'preamble'); 
-      ; _buf << ("<nav id=\"toc\""); _temple_html_attributeremover1 = []; _slim_codeattributes1 = (document.attr 'toc-class', 'toc'); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes1.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes1); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << (" role=\"doc-toc\"><h2 id=\"toc-title\">"); 
-      ; _buf << ((document.attr 'toc-title')); 
-      ; _buf << ("</h2>"); 
-      ; _buf << (converter.convert document, 'outline'); 
-      ; _buf << ("</nav>"); 
-      ; end; _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ("<section id=\"preamble\" aria-label=\"Preamble\">".freeze); 
+      ; _buf << ((content).to_s); 
+      ; _buf << ("</section>".freeze); if (document.attr? :toc) && (document.attr? 'toc-placement', 'preamble'); 
+      ; _buf << ("<nav id=\"toc\"".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes1 = (document.attr 'toc-class', 'toc'); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes1).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << (" role=\"doc-toc\"><h2 id=\"toc-title\">".freeze); 
+      ; _buf << (((document.attr 'toc-title')).to_s); 
+      ; _buf << ("</h2>".freeze); 
+      ; _buf << ((converter.convert document, 'outline').to_s); 
+      ; _buf << ("</nav>".freeze); 
+      ; end; _buf
     end
   end
 
   def quote(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_title :class=>'quote-block' do; _slim_controls2 = []; 
-      ; _slim_controls2 << ("<blockquote>"); 
-      ; _slim_controls3 = html_tag_if !blocks?, :p do; _slim_controls4 = []; 
-      ; _slim_controls4 << (content); 
-      ; _slim_controls4 = _slim_controls4.join(""); end; _slim_controls2 << (_slim_controls3); if attr?(:attribution) || attr?(:citetitle); 
-      ; _slim_controls2 << ("<footer>&#8212; <cite>"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_title :class=>'quote-block' do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ("<blockquote>".freeze); 
+      ; _slim_controls3 = html_tag_if !blocks?, :p do; _slim_controls4 = ''; 
+      ; _slim_controls4 << ((content).to_s); 
+      ; _slim_controls4; end; _slim_controls2 << ((_slim_controls3).to_s); if attr?(:attribution) || attr?(:citetitle); 
+      ; _slim_controls2 << ("<footer>&#8212; <cite>".freeze); 
       ; 
       ; 
-      ; _slim_controls2 << ([(attr :attribution), (attr :citetitle)].compact.join(', ')); 
-      ; _slim_controls2 << ("</cite></footer>"); 
-      ; end; _slim_controls2 << ("</blockquote>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls2 << (([(attr :attribution), (attr :citetitle)].compact.join(', ')).to_s); 
+      ; _slim_controls2 << ("</cite></footer>".freeze); 
+      ; end; _slim_controls2 << ("</blockquote>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def section(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << ("<section"); _temple_html_attributeremover1 = []; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "doc-section"; _temple_html_attributemerger1[1] = []; _slim_codeattributes1 = ["level-#{section_level}", role]; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << (_slim_codeattributes1.join(" ")); else; _temple_html_attributemerger1[1] << (_slim_codeattributes1); end; _temple_html_attributemerger1[1] = _temple_html_attributemerger1[1].join(""); _temple_html_attributeremover1 << (_temple_html_attributemerger1.reject(&:empty?).join(" ")); _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << (">"); 
-      ; _slim_htag_filter1 = ((section_level + 1)).to_s; _buf << ("<h"); _buf << (_slim_htag_filter1); _slim_codeattributes2 = id; if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes2); _buf << ("\""); end; end; _buf << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ("<section".freeze); _temple_html_attributeremover1 = ''; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "doc-section"; _temple_html_attributemerger1[1] = ''; _slim_codeattributes1 = ["level-#{section_level}", role]; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributemerger1[1] << ((_slim_codeattributes1).to_s); end; _temple_html_attributemerger1[1]; _temple_html_attributeremover1 << ((_temple_html_attributemerger1.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << (">".freeze); 
+      ; _slim_htag_filter1 = ((section_level + 1)).to_s; _buf << ("<h".freeze); _buf << ((_slim_htag_filter1).to_s); _slim_codeattributes2 = id; if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes2).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
       ; if id; 
       ; if document.attr? :sectanchors; 
-      ; _buf << ("<a class=\"anchor\" href=\"#"); _buf << (id); _buf << ("\" aria-hidden=\"true\"></a>"); 
+      ; _buf << ("<a class=\"anchor\" href=\"#".freeze); _buf << ((id).to_s); _buf << ("\" aria-hidden=\"true\"></a>".freeze); 
       ; end; if document.attr? :sectlinks; 
-      ; _buf << ("<a class=\"link\" href=\"#"); _buf << (id); _buf << ("\">"); _buf << (section_title); 
-      ; _buf << ("</a>"); else; 
-      ; _buf << (section_title); 
+      ; _buf << ("<a class=\"link\" href=\"#".freeze); _buf << ((id).to_s); _buf << ("\">".freeze); _buf << ((section_title).to_s); 
+      ; _buf << ("</a>".freeze); else; 
+      ; _buf << ((section_title).to_s); 
       ; end; else; 
-      ; _buf << (section_title); 
-      ; end; _buf << ("</h"); _buf << (_slim_htag_filter1); _buf << (">"); _buf << (content); 
-      ; _buf << ("</section>"); _buf = _buf.join("")
+      ; _buf << ((section_title).to_s); 
+      ; end; _buf << ("</h".freeze); _buf << ((_slim_htag_filter1).to_s); _buf << (">".freeze); _buf << ((content).to_s); 
+      ; _buf << ("</section>".freeze); _buf
     end
   end
 
   def sidebar(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << ("<aside"); _temple_html_attributeremover1 = []; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "sidebar"; _temple_html_attributemerger1[1] = []; _slim_codeattributes1 = role; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << (_slim_codeattributes1.join(" ")); else; _temple_html_attributemerger1[1] << (_slim_codeattributes1); end; _temple_html_attributemerger1[1] = _temple_html_attributemerger1[1].join(""); _temple_html_attributeremover1 << (_temple_html_attributemerger1.reject(&:empty?).join(" ")); _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _slim_codeattributes2 = id; if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes2); _buf << ("\""); end; end; _buf << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ("<aside".freeze); _temple_html_attributeremover1 = ''; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "sidebar"; _temple_html_attributemerger1[1] = ''; _slim_codeattributes1 = role; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributemerger1[1] << ((_slim_codeattributes1).to_s); end; _temple_html_attributemerger1[1]; _temple_html_attributeremover1 << ((_temple_html_attributemerger1.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _slim_codeattributes2 = id; if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes2).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
       ; if title?; 
-      ; _buf << ("<h6 class=\"block-title\">"); _buf << (title); 
-      ; _buf << ("</h6>"); end; _buf << (content); 
-      ; _buf << ("</aside>"); _buf = _buf.join("")
+      ; _buf << ("<h6 class=\"block-title\">".freeze); _buf << ((title).to_s); 
+      ; _buf << ("</h6>".freeze); end; _buf << ((content).to_s); 
+      ; _buf << ("</aside>".freeze); _buf
     end
   end
 
   def stem(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_caption :top, :class=>'stem-block' do; _slim_controls2 = []; 
-      ; _slim_controls2 << ("<div class=\"math\""); _slim_codeattributes1 = stem_lang; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls2 << (" data-lang"); else; _slim_controls2 << (" data-lang=\""); _slim_controls2 << (_slim_codeattributes1); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">"); _slim_controls2 << ((delimit_stem content, style)); 
-      ; _slim_controls2 << ("</div>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_caption :top, :class=>'stem-block' do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ("<div class=\"math\"".freeze); _slim_codeattributes1 = stem_lang; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls2 << (" data-lang".freeze); else; _slim_controls2 << (" data-lang=\"".freeze); _slim_controls2 << ((_slim_codeattributes1).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">".freeze); _slim_controls2 << (((delimit_stem content, style)).to_s); 
+      ; _slim_controls2 << ("</div>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def table(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_caption :top, :class=>'table-block' do; _slim_controls2 = []; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_caption :top, :class=>'table-block' do; _slim_controls2 = ''; 
       ; 
       ; 
-      ; _slim_controls2 << ("<table"); _temple_html_attributeremover1 = []; _slim_codeattributes1 = ["frame-#{attr :frame, 'all'}", "grid-#{attr :grid, 'all'}", stretch?, ("stripes-#{attr :stripes}" if attr? :stripes)]; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes1.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes1); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover1); _slim_controls2 << ("\""); end; _slim_codeattributes2 = style_value(width: ("#{attr :tablepcwidth}%" if !autowidth? && !stretch? || (local_attr :width)),
-      float: (attr :float)); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" style"); else; _slim_controls2 << (" style=\""); _slim_controls2 << (_slim_codeattributes2); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">"); 
+      ; _slim_controls2 << ("<table".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes1 = ["frame-#{attr :frame, 'all'}", "grid-#{attr :grid, 'all'}", stretch?, ("stripes-#{attr :stripes}" if attr? :stripes)]; if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes1).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover1).to_s); _slim_controls2 << ("\"".freeze); end; _slim_codeattributes2 = style_value(width: ("#{attr :tablepcwidth}%" if !autowidth? && !stretch? || (local_attr :width)),
+      float: (attr :float)); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" style".freeze); else; _slim_controls2 << (" style=\"".freeze); _slim_controls2 << ((_slim_codeattributes2).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">".freeze); 
       ; unless (attr :rowcount).zero?; 
-      ; _slim_controls2 << ("<colgroup>"); 
+      ; _slim_controls2 << ("<colgroup>".freeze); 
       ; if autowidth?; 
       ; columns.each do; 
-      ; _slim_controls2 << ("<col>"); 
+      ; _slim_controls2 << ("<col>".freeze); 
       ; end; else; 
       ; columns.each do |col|; 
-      ; _slim_controls2 << ("<col"); _slim_codeattributes3 = style_value(width: ("#{col.attr :colpcwidth}%" if !autowidth? col)); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" style"); else; _slim_controls2 << (" style=\""); _slim_controls2 << (_slim_codeattributes3); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">"); 
-      ; end; end; _slim_controls2 << ("</colgroup>"); [:head, :foot, :body].reject { |tblsec| rows[tblsec].empty? }.each do |tblsec|; 
-      ; _slim_controls2 << ("<t"); _slim_controls2 << (tblsec); _slim_controls2 << (">"); 
+      ; _slim_controls2 << ("<col".freeze); _slim_codeattributes3 = style_value(width: ("#{col.attr :colpcwidth}%" if !autowidth? col)); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" style".freeze); else; _slim_controls2 << (" style=\"".freeze); _slim_controls2 << ((_slim_codeattributes3).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">".freeze); 
+      ; end; end; _slim_controls2 << ("</colgroup>".freeze); [:head, :foot, :body].reject { |tblsec| rows[tblsec].empty? }.each do |tblsec|; 
+      ; _slim_controls2 << ("<t".freeze); _slim_controls2 << ((tblsec).to_s); _slim_controls2 << (">".freeze); 
       ; rows[tblsec].each do |row|; 
-      ; _slim_controls2 << ("<tr>"); 
+      ; _slim_controls2 << ("<tr>".freeze); 
       ; row.each do |cell|; 
       ; _slim_controls3 = html_tag(tblsec == :head || cell.style == :header ? 'th' : 'td',
       :class=>["halign-#{cell.attr :halign}", "valign-#{cell.attr :valign}"],
       :colspan=>cell.colspan,
       :rowspan=>cell.rowspan,
-      :style=>style_value(background_color: (document.attr :cellbgcolor))) do; _slim_controls4 = []; 
+      :style=>style_value(background_color: (document.attr :cellbgcolor))) do; _slim_controls4 = ''; 
       ; if tblsec == :head; 
-      ; _slim_controls4 << (cell.text); 
+      ; _slim_controls4 << ((cell.text).to_s); 
       ; else; 
       ; case cell.style; 
       ; when :asciidoc; 
-      ; _slim_controls4 << (cell.content); 
+      ; _slim_controls4 << ((cell.content).to_s); 
       ; when :literal; 
-      ; _slim_controls4 << ("<div class=\"literal\"><pre>"); _slim_controls4 << (cell.text); 
-      ; _slim_controls4 << ("</pre></div>"); else; 
+      ; _slim_controls4 << ("<div class=\"literal\"><pre>".freeze); _slim_controls4 << ((cell.text).to_s); 
+      ; _slim_controls4 << ("</pre></div>".freeze); else; 
       ; if (content = cell.content).one?; 
-      ; _slim_controls4 << (content.first); 
+      ; _slim_controls4 << ((content.first).to_s); 
       ; else; 
       ; content.each do |text|; 
-      ; _slim_controls4 << ("<p>"); _slim_controls4 << (text); 
-      ; _slim_controls4 << ("</p>"); end; end; end; end; _slim_controls4 = _slim_controls4.join(""); end; _slim_controls2 << (_slim_controls3); end; _slim_controls2 << ("</tr>"); end; _slim_controls2 << ("</t"); _slim_controls2 << (tblsec); _slim_controls2 << (">"); 
-      ; end; end; _slim_controls2 << ("</table>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls4 << ("<p>".freeze); _slim_controls4 << ((text).to_s); 
+      ; _slim_controls4 << ("</p>".freeze); end; end; end; end; _slim_controls4; end; _slim_controls2 << ((_slim_controls3).to_s); end; _slim_controls2 << ("</tr>".freeze); end; _slim_controls2 << ("</t".freeze); _slim_controls2 << ((tblsec).to_s); _slim_controls2 << (">".freeze); 
+      ; end; end; _slim_controls2 << ("</table>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def thematic_break(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _buf << ("<hr>"); 
-      ; _buf = _buf.join("")
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _buf << ("<hr>".freeze); 
+      ; _buf
     end
   end
 
   def toc(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; 
       ; 
       ; if document.attr?(:toc) && document.sections?; 
       ; toc_id = id || ('toc' if document.embedded? || !document.attr?('toc-placement')); 
-      ; _buf << ("<nav"); _slim_codeattributes1 = toc_id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes1); _buf << ("\""); end; end; _temple_html_attributeremover1 = []; _slim_codeattributes2 = (attr :role, (document.attr 'toc-class', 'toc')); if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes2.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes2); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _buf << (" class=\""); _buf << (_temple_html_attributeremover1); _buf << ("\""); end; _buf << (" role=\"doc-toc\">"); 
-      ; _slim_htag_filter1 = ((level + 2)).to_s; _buf << ("<h"); _buf << (_slim_htag_filter1); _slim_codeattributes3 = ("#{toc_id}-title" if toc_id); if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id"); else; _buf << (" id=\""); _buf << (_slim_codeattributes3); _buf << ("\""); end; end; _buf << (">"); 
-      ; _buf << ((title || (document.attr 'toc-title'))); 
-      ; _buf << ("</h"); _buf << (_slim_htag_filter1); _buf << (">"); 
-      ; _buf << (converter.convert document, 'outline', :toclevels=>((attr :levels).to_i if attr? :levels)); 
-      ; _buf << ("</nav>"); else; 
-      ; _buf << ("<!--toc disabled-->"); 
-      ; end; _buf = _buf.join("")
+      ; _buf << ("<nav".freeze); _slim_codeattributes1 = toc_id; if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover1 = ''; _slim_codeattributes2 = (attr :role, (document.attr 'toc-class', 'toc')); if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes2).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover1).to_s); _buf << ("\"".freeze); end; _buf << (" role=\"doc-toc\">".freeze); 
+      ; _slim_htag_filter1 = ((level + 2)).to_s; _buf << ("<h".freeze); _buf << ((_slim_htag_filter1).to_s); _slim_codeattributes3 = ("#{toc_id}-title" if toc_id); if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); 
+      ; _buf << (((title || (document.attr 'toc-title'))).to_s); 
+      ; _buf << ("</h".freeze); _buf << ((_slim_htag_filter1).to_s); _buf << (">".freeze); 
+      ; _buf << ((converter.convert document, 'outline', :toclevels=>((attr :levels).to_i if attr? :levels)).to_s); 
+      ; _buf << ("</nav>".freeze); else; 
+      ; _buf << ("<!--toc disabled-->".freeze); 
+      ; end; _buf
     end
   end
 
   def ulist(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; checklist = 'task-list' if option? 'checklist'; 
-      ; _slim_controls1 = block_with_title :class=>['ulist', style] do; _slim_controls2 = []; 
-      ; _slim_controls2 << ("<ul"); _temple_html_attributeremover1 = []; _slim_codeattributes1 = (checklist || style); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << (_slim_codeattributes1.join(" ")); else; _temple_html_attributeremover1 << (_slim_codeattributes1); end; _temple_html_attributeremover1 = _temple_html_attributeremover1.join(""); if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover1); _slim_controls2 << ("\""); end; _slim_controls2 << (">"); 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; checklist = 'task-list' if option? 'checklist'; 
+      ; _slim_controls1 = block_with_title :class=>['ulist', style] do; _slim_controls2 = ''; 
+      ; _slim_controls2 << ("<ul".freeze); _temple_html_attributeremover1 = ''; _slim_codeattributes1 = (checklist || style); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((_slim_codeattributes1.join(" ")).to_s); else; _temple_html_attributeremover1 << ((_slim_codeattributes1).to_s); end; _temple_html_attributeremover1; if !_temple_html_attributeremover1.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover1).to_s); _slim_controls2 << ("\"".freeze); end; _slim_controls2 << (">".freeze); 
       ; items.each do |item|; 
       ; if checklist && (item.attr? :checkbox); 
-      ; _slim_controls2 << ("<li"); _temple_html_attributeremover2 = []; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "task-list-item"; _temple_html_attributemerger1[1] = []; _slim_codeattributes2 = item.role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributemerger1[1] << (_slim_codeattributes2.join(" ")); else; _temple_html_attributemerger1[1] << (_slim_codeattributes2); end; _temple_html_attributemerger1[1] = _temple_html_attributemerger1[1].join(""); _temple_html_attributeremover2 << (_temple_html_attributemerger1.reject(&:empty?).join(" ")); _temple_html_attributeremover2 = _temple_html_attributeremover2.join(""); if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover2); _slim_controls2 << ("\""); end; _slim_codeattributes3 = item.id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" id"); else; _slim_controls2 << (" id=\""); _slim_controls2 << (_slim_codeattributes3); _slim_controls2 << ("\""); end; end; _slim_controls2 << ("><input class=\"task-list-item-checkbox\" type=\"checkbox\" disabled"); 
-      ; _slim_codeattributes4 = (item.attr? :checked); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" checked"); else; _slim_controls2 << (" checked=\""); _slim_controls2 << (_slim_codeattributes4); _slim_controls2 << ("\""); end; end; _slim_controls2 << ("> "); 
-      ; _slim_controls2 << (item.text); 
-      ; _slim_controls2 << ("</li>"); else; 
-      ; _slim_controls2 << ("<li"); _slim_codeattributes5 = item.id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls2 << (" id"); else; _slim_controls2 << (" id=\""); _slim_controls2 << (_slim_codeattributes5); _slim_controls2 << ("\""); end; end; _temple_html_attributeremover3 = []; _slim_codeattributes6 = item.role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover3 << (_slim_codeattributes6.join(" ")); else; _temple_html_attributeremover3 << (_slim_codeattributes6); end; _temple_html_attributeremover3 = _temple_html_attributeremover3.join(""); if !_temple_html_attributeremover3.empty?; _slim_controls2 << (" class=\""); _slim_controls2 << (_temple_html_attributeremover3); _slim_controls2 << ("\""); end; _slim_controls2 << (">"); 
-      ; _slim_controls2 << ((print_item_content item)); 
-      ; _slim_controls2 << ("</li>"); end; end; _slim_controls2 << ("</ul>"); _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls2 << ("<li".freeze); _temple_html_attributeremover2 = ''; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "task-list-item"; _temple_html_attributemerger1[1] = ''; _slim_codeattributes2 = item.role; if Array === _slim_codeattributes2; _slim_codeattributes2 = _slim_codeattributes2.flatten; _slim_codeattributes2.map!(&:to_s); _slim_codeattributes2.reject!(&:empty?); _temple_html_attributemerger1[1] << ((_slim_codeattributes2.join(" ")).to_s); else; _temple_html_attributemerger1[1] << ((_slim_codeattributes2).to_s); end; _temple_html_attributemerger1[1]; _temple_html_attributeremover2 << ((_temple_html_attributemerger1.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover2).to_s); _slim_controls2 << ("\"".freeze); end; _slim_codeattributes3 = item.id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" id".freeze); else; _slim_controls2 << (" id=\"".freeze); _slim_controls2 << ((_slim_codeattributes3).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << ("><input class=\"task-list-item-checkbox\" type=\"checkbox\" disabled".freeze); 
+      ; _slim_codeattributes4 = (item.attr? :checked); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" checked".freeze); else; _slim_controls2 << (" checked=\"".freeze); _slim_controls2 << ((_slim_codeattributes4).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << ("> ".freeze); 
+      ; _slim_controls2 << ((item.text).to_s); 
+      ; _slim_controls2 << ("</li>".freeze); else; 
+      ; _slim_controls2 << ("<li".freeze); _slim_codeattributes5 = item.id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls2 << (" id".freeze); else; _slim_controls2 << (" id=\"".freeze); _slim_controls2 << ((_slim_codeattributes5).to_s); _slim_controls2 << ("\"".freeze); end; end; _temple_html_attributeremover3 = ''; _slim_codeattributes6 = item.role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover3 << ((_slim_codeattributes6.join(" ")).to_s); else; _temple_html_attributeremover3 << ((_slim_codeattributes6).to_s); end; _temple_html_attributeremover3; if !_temple_html_attributeremover3.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover3).to_s); _slim_controls2 << ("\"".freeze); end; _slim_controls2 << (">".freeze); 
+      ; _slim_controls2 << (((print_item_content item)).to_s); 
+      ; _slim_controls2 << ("</li>".freeze); end; end; _slim_controls2 << ("</ul>".freeze); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def verse(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_title :class=>'verse-block' do; _slim_controls2 = []; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_title :class=>'verse-block' do; _slim_controls2 = ''; 
       ; if attr?(:attribution) || attr?(:citetitle); 
-      ; _slim_controls2 << ("<blockquote class=\"verse\"><pre class=\"verse\">"); 
-      ; _slim_controls2 << (content); 
-      ; _slim_controls2 << ("</pre><footer>&#8212; <cite>"); 
+      ; _slim_controls2 << ("<blockquote class=\"verse\"><pre class=\"verse\">".freeze); 
+      ; _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2 << ("</pre><footer>&#8212; <cite>".freeze); 
       ; 
       ; 
-      ; _slim_controls2 << ([(attr :attribution), (attr :citetitle)].compact.join(', ')); 
-      ; _slim_controls2 << ("</cite></footer></blockquote>"); 
+      ; _slim_controls2 << (([(attr :attribution), (attr :citetitle)].compact.join(', ')).to_s); 
+      ; _slim_controls2 << ("</cite></footer></blockquote>".freeze); 
       ; else; 
-      ; _slim_controls2 << ("<pre class=\"verse\">"); _slim_controls2 << (content); 
-      ; _slim_controls2 << ("</pre>"); end; _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; _slim_controls2 << ("<pre class=\"verse\">".freeze); _slim_controls2 << ((content).to_s); 
+      ; _slim_controls2 << ("</pre>".freeze); end; _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
   def video(node, opts = {})
     node.extend(Helpers)
     node.instance_eval do
-      _buf = []; _slim_controls1 = block_with_caption :bottom, :class=>'video-block' do; _slim_controls2 = []; 
+      converter.set_local_variables(binding, opts) unless opts.empty?
+      _buf = ''; _slim_controls1 = block_with_caption :bottom, :class=>'video-block' do; _slim_controls2 = ''; 
       ; if video_iframe?; 
       ; 
       ; 
       ; 
       ; 
       ; 
-      ; _slim_controls2 << ("<iframe"); _slim_codeattributes1 = video_uri; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls2 << (" src"); else; _slim_controls2 << (" src=\""); _slim_controls2 << (_slim_codeattributes1); _slim_controls2 << ("\""); end; end; _slim_codeattributes2 = (attr :width); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" width"); else; _slim_controls2 << (" width=\""); _slim_controls2 << (_slim_codeattributes2); _slim_controls2 << ("\""); end; end; _slim_codeattributes3 = (attr :height); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" height"); else; _slim_controls2 << (" height=\""); _slim_controls2 << (_slim_codeattributes3); _slim_controls2 << ("\""); end; end; _slim_codeattributes4 = 0; if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" frameborder"); else; _slim_controls2 << (" frameborder=\""); _slim_controls2 << (_slim_codeattributes4); _slim_controls2 << ("\""); end; end; _slim_codeattributes5 = !(option? 'nofullscreen'); if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls2 << (" allowfullscreen"); else; _slim_controls2 << (" allowfullscreen=\""); _slim_controls2 << (_slim_codeattributes5); _slim_controls2 << ("\""); end; end; _slim_controls2 << ("></iframe>"); 
+      ; _slim_controls2 << ("<iframe".freeze); _slim_codeattributes1 = video_uri; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls2 << (" src".freeze); else; _slim_controls2 << (" src=\"".freeze); _slim_controls2 << ((_slim_codeattributes1).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes2 = (attr :width); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls2 << (" width".freeze); else; _slim_controls2 << (" width=\"".freeze); _slim_controls2 << ((_slim_codeattributes2).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes3 = (attr :height); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls2 << (" height".freeze); else; _slim_controls2 << (" height=\"".freeze); _slim_controls2 << ((_slim_codeattributes3).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes4 = 0; if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" frameborder".freeze); else; _slim_controls2 << (" frameborder=\"".freeze); _slim_controls2 << ((_slim_codeattributes4).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes5 = !(option? 'nofullscreen'); if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls2 << (" allowfullscreen".freeze); else; _slim_controls2 << (" allowfullscreen=\"".freeze); _slim_controls2 << ((_slim_codeattributes5).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << ("></iframe>".freeze); 
       ; else; 
       ; 
       ; 
@@ -1508,12 +1547,17 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
       ; 
       ; 
       ; 
-      ; _slim_controls2 << ("<video"); _slim_codeattributes6 = video_uri; if _slim_codeattributes6; if _slim_codeattributes6 == true; _slim_controls2 << (" src"); else; _slim_controls2 << (" src=\""); _slim_controls2 << (_slim_codeattributes6); _slim_controls2 << ("\""); end; end; _slim_codeattributes7 = (attr :width); if _slim_codeattributes7; if _slim_codeattributes7 == true; _slim_controls2 << (" width"); else; _slim_controls2 << (" width=\""); _slim_controls2 << (_slim_codeattributes7); _slim_controls2 << ("\""); end; end; _slim_codeattributes8 = (attr :height); if _slim_codeattributes8; if _slim_codeattributes8 == true; _slim_controls2 << (" height"); else; _slim_controls2 << (" height=\""); _slim_controls2 << (_slim_codeattributes8); _slim_controls2 << ("\""); end; end; _slim_codeattributes9 = (media_uri(attr :poster) if attr? :poster); if _slim_codeattributes9; if _slim_codeattributes9 == true; _slim_controls2 << (" poster"); else; _slim_controls2 << (" poster=\""); _slim_controls2 << (_slim_codeattributes9); _slim_controls2 << ("\""); end; end; _slim_codeattributes10 = (option? 'autoplay'); if _slim_codeattributes10; if _slim_codeattributes10 == true; _slim_controls2 << (" autoplay"); else; _slim_controls2 << (" autoplay=\""); _slim_controls2 << (_slim_codeattributes10); _slim_controls2 << ("\""); end; end; _slim_codeattributes11 = (option? 'muted'); if _slim_codeattributes11; if _slim_codeattributes11 == true; _slim_controls2 << (" muted"); else; _slim_controls2 << (" muted=\""); _slim_controls2 << (_slim_codeattributes11); _slim_controls2 << ("\""); end; end; _slim_codeattributes12 = !(option? 'nocontrols'); if _slim_codeattributes12; if _slim_codeattributes12 == true; _slim_controls2 << (" controls"); else; _slim_controls2 << (" controls=\""); _slim_controls2 << (_slim_codeattributes12); _slim_controls2 << ("\""); end; end; _slim_codeattributes13 = (option? 'loop'); if _slim_codeattributes13; if _slim_codeattributes13 == true; _slim_controls2 << (" loop"); else; _slim_controls2 << (" loop=\""); _slim_controls2 << (_slim_codeattributes13); _slim_controls2 << ("\""); end; end; _slim_controls2 << (">Your browser does not support the video tag.</video>"); 
+      ; _slim_controls2 << ("<video".freeze); _slim_codeattributes6 = video_uri; if _slim_codeattributes6; if _slim_codeattributes6 == true; _slim_controls2 << (" src".freeze); else; _slim_controls2 << (" src=\"".freeze); _slim_controls2 << ((_slim_codeattributes6).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes7 = (attr :width); if _slim_codeattributes7; if _slim_codeattributes7 == true; _slim_controls2 << (" width".freeze); else; _slim_controls2 << (" width=\"".freeze); _slim_controls2 << ((_slim_codeattributes7).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes8 = (attr :height); if _slim_codeattributes8; if _slim_codeattributes8 == true; _slim_controls2 << (" height".freeze); else; _slim_controls2 << (" height=\"".freeze); _slim_controls2 << ((_slim_codeattributes8).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes9 = (media_uri(attr :poster) if attr? :poster); if _slim_codeattributes9; if _slim_codeattributes9 == true; _slim_controls2 << (" poster".freeze); else; _slim_controls2 << (" poster=\"".freeze); _slim_controls2 << ((_slim_codeattributes9).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes10 = (option? 'autoplay'); if _slim_codeattributes10; if _slim_codeattributes10 == true; _slim_controls2 << (" autoplay".freeze); else; _slim_controls2 << (" autoplay=\"".freeze); _slim_controls2 << ((_slim_codeattributes10).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes11 = (option? 'muted'); if _slim_codeattributes11; if _slim_codeattributes11 == true; _slim_controls2 << (" muted".freeze); else; _slim_controls2 << (" muted=\"".freeze); _slim_controls2 << ((_slim_codeattributes11).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes12 = !(option? 'nocontrols'); if _slim_codeattributes12; if _slim_codeattributes12 == true; _slim_controls2 << (" controls".freeze); else; _slim_controls2 << (" controls=\"".freeze); _slim_controls2 << ((_slim_codeattributes12).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_codeattributes13 = (option? 'loop'); if _slim_codeattributes13; if _slim_codeattributes13 == true; _slim_controls2 << (" loop".freeze); else; _slim_controls2 << (" loop=\"".freeze); _slim_controls2 << ((_slim_codeattributes13).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">Your browser does not support the video tag.</video>".freeze); 
       ; 
-      ; end; _slim_controls2 = _slim_controls2.join(""); end; _buf << (_slim_controls1); _buf = _buf.join("")
+      ; end; _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
   #------------------ End of generated transformation methods ------------------#
 
+  def set_local_variables(binding, vars)
+    vars.each do |key, val|
+      binding.local_variable_set(key.to_sym, val)
+    end
+  end
 
 end
