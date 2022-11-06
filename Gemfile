@@ -9,6 +9,8 @@ unless ENV.fetch('ASCIIDOCTOR_VERSION', '').empty?
   end
 end
 
+gem 'asciidoctor-doctest', github: 'niknetniko/asciidoctor-doctest', branch: 'master'
+
 group :development do
   # Keep in sync with version used in opal-node-runtime <- asciidoctor.js.
   # TODO: Maybe replace with JS version after
