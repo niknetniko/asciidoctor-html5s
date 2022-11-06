@@ -7,4 +7,4 @@ Gemfile.lock
 README.md
 package-lock.json
 yarn.lock
-lib/asciidoctor/html5s/converter.rb
+#lib/asciidoctor/html5s/converter.rb
