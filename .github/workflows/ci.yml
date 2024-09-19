@@ -36,6 +36,4 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-      - env:
-          RAILS_ENV: "test"
-        run: bundle exec rubocop -c .rubocop.yml
+      - run: bundle exec rubocop -c .rubocop.yml
