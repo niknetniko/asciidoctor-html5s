@@ -42,43 +42,34 @@ jobs:
       - run: bundle install
 
       - run: bundle exec rake test
-      - run: bundle exec rake build:js
-      - run: bundle exec rake readme2md
 
-  publish:
-    name: Publish to RubyGems and npmjs
-    needs: [test]
-    if: startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-
-      - run: sudo apt-get install pandoc
-
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
-          bundler-cache: true
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org
-
-      - run: bundle exec rake build
-      - run: bundle exec rake build:js
-      - run: bundle exec rake readme2md
-
-      - name: Publish to RubyGems
-        run: |
-          install -D -m 0600 /dev/null $HOME/.gem/credentials
-          printf -- '---\n:rubygems_api_key: %s\n' "$RUBYGEMS_API_KEY" > $HOME/.gem/credentials
-          gem build *.gemspec
-          gem push *.gem
-        env:
-          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}  # c9a4......f34d
-
-      - name: Publish to npmjs
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  # d0e3......b2a6
+#  publish:
+#    name: Publish to RubyGems
+#    needs: [test]
+#    if: startsWith(github.ref, 'refs/tags/v')
+#    runs-on: ubuntu-20.04
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - run: sudo apt-get install pandoc
+#
+#      - uses: ruby/setup-ruby@v1
+#        with:
+#          ruby-version: 2.7
+#          bundler-cache: true
+#
+#      - uses: actions/setup-node@v2
+#        with:
+#          node-version: 12
+#          registry-url: https://registry.npmjs.org
+#
+#      - run: bundle exec rake build
+#
+#      - name: Publish to RubyGems
+#        run: |
+#          install -D -m 0600 /dev/null $HOME/.gem/credentials
+#          printf -- '---\n:rubygems_api_key: %s\n' "$RUBYGEMS_API_KEY" > $HOME/.gem/credentials
+#          gem build *.gemspec
+#          gem push *.gem
+#        env:
+#          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}  # c9a4......f34d

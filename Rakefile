@@ -4,7 +4,6 @@ require 'rake/clean'
 
 BACKEND_NAME = 'html5s'
 CONVERTER_FILE = 'lib/asciidoctor/html5s/converter.rb'
-JS_FILE = 'dist/asciidoctor-html5s.js'
 TEMPLATES_DIR = 'data/templates'
 
 
@@ -22,49 +21,15 @@ namespace :build do
   task 'converter:opal' do
     build_converter :opal
   end
-
-  desc "Transcompile to JavaScript and generate #{JS_FILE}"
-  task :js => 'converter:opal' do
-    require 'opal'
-
-    builder = Opal::Builder.new(compiler_options: {
-      dynamic_require_severity: :error,
-    })
-    builder.append_paths 'lib'
-    builder.build 'asciidoctor/html5s'
-
-    mkdir_p File.dirname(JS_FILE)
-    File.open(JS_FILE, 'w') do |file|
-      template = File.read('src/asciidoctor-html5s.tmpl.js')
-      file << template.sub('//OPAL-GENERATED-CODE//') { builder.to_s }
-    end
-    File.binwrite "#{JS_FILE}.map", builder.source_map
-  end
 end
 
 task :build => 'build:converter'
-
-task :readme2md do
-  require 'asciidoctor'
-  require 'pandoc-ruby'
-
-  docbook = Asciidoctor
-    .load_file('README.adoc', header_footer: true, backend: 'docbook', attributes: 'npm-readme')
-    .convert
-  markdown = PandocRuby
-    .convert(docbook, from: :docbook, to: :markdown_github, 'base-header-level': 2)
-
-  File.write('README.md', markdown)
-end
 
 task :clean do
   rm_rf CONVERTER_FILE
   rm_rf Dir['*.gem']
   rm_rf Dir['asciidoctor-html5s-*.tgz']
-  rm_rf Dir['dist/*.js']
-  rm_rf Dir['dist/*.js.map']
   rm_rf Dir['pkg/*.gem']
-  rm_rf 'README.md'
 end
 
 begin

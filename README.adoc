@@ -142,25 +142,12 @@ strike::
 
 Note: This converter consists of https://github.com/slim-template/slim/[Slim] templates, but they are precompiled into pure Ruby code using https://github.com/jirutka/asciidoctor-templates-compiler/[asciidoctor-templates-compiler], so you don’t need Slim to use it!
 
-ifndef::npm-readme[]
-=== Ruby
-
 * https://www.ruby-lang.org/[Ruby] 2.0+ or http://jruby.org/[JRuby] 9.1+
 * https://rubygems.org/gems/asciidoctor/[Asciidoctor] 1.5.7+
 * https://rubygems.org/gems/thread_safe/[thread_safe] (not required, but recommended for Ruby MRI)
 
 
-=== Node.js
-endif::npm-readme[]
-
-* https://nodejs.org/[Node.js]
-* https://www.npmjs.com/package/@asciidoctor/core[@asciidoctor/core] >=2.0.0 <3.0.0
-
-
 == Installation
-
-ifndef::npm-readme[]
-=== Ruby
 
 Install {gem-name} from Rubygems:
 
@@ -173,42 +160,10 @@ or to get the latest development version:
 gem install --pre {gem-name}
 
 
-=== Node.js
-endif::npm-readme[]
-
-Install {gem-name} from npmjs.com:
-
-[source, sh, subs="+attributes"]
-npm install --save {gem-name}
-
-
 == Usage
-
-ifndef::npm-readme[]
-=== CLI
 
 [source, sh, subs="+attributes"]
 asciidoctor -r {gem-name} -b html5s FILE...
-
-
-=== Node.js
-endif::npm-readme[]
-
-[source, js, subs="+attributes"]
-----
-// Load asciidoctor.js and {gem-name}.
-const asciidoctor = require('@asciidoctor/core')()
-const asciidoctorHtml5s = require('{gem-name}')
-
-// Register the HTML5s converter and supporting extension.
-asciidoctorHtml5s.register()
-
-// Convert the content to HTML using html5s converter.
-const content = "Hello, *world!*!"
-const html = asciidoctor.convert(content, { backend: 'html5s' })
-console.log(html)
-----
-
 
 === Attributes
 
@@ -230,4 +185,3 @@ html5s-image-self-link-label::
 
 This project is licensed under http://opensource.org/licenses/MIT/[MIT License].
 For the full text of the license, see the link:LICENSE[LICENSE] file.
-
