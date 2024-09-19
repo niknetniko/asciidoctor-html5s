@@ -5,7 +5,7 @@ unless ENV.fetch('ASCIIDOCTOR_VERSION', '').empty?
   if (match = ENV['ASCIIDOCTOR_VERSION'].match(/^git:(\w+)/))
     gem 'asciidoctor', github: 'asciidoctor/asciidoctor', ref: match[1]
   else
-    gem 'asciidoctor', ENV['ASCIIDOCTOR_VERSION']
+    gem 'asciidoctor', ENV.fetch('ASCIIDOCTOR_VERSION', nil)
   end
 end
 

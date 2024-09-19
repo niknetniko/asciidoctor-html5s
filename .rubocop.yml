@@ -1,0 +1,90 @@
+---
+
+require:
+- rubocop-minitest
+- rubocop-rake
+- rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  Exclude:
+    # This is a generated file.
+    - 'lib/asciidoctor/html5s/converter.rb'
+
+Gemspec/DevelopmentDependencies:
+  EnforcedStyle: gemspec
+
+Layout/LineLength:
+  Max: 120
+
+Lint/DuplicateMethods:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ModuleLength:
+  Max: 300
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+  - lib/asciidoctor-html5s.rb
+
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+RSpec/ContextWording:
+  AllowedPatterns:
+  - "^and"
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/NoExpectationExample:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+RSpec/SubjectStub:
+  Enabled: false
+
+RSpec/VerifiedDoubleReference:
+  Enabled: false
+
+Rake/Desc:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringConcatenation:
+  Enabled: false

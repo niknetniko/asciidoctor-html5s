@@ -2,10 +2,9 @@
 require 'bundler/gem_tasks'
 require 'rake/clean'
 
-BACKEND_NAME = 'html5s'
-CONVERTER_FILE = 'lib/asciidoctor/html5s/converter.rb'
-TEMPLATES_DIR = 'data/templates'
-
+BACKEND_NAME = 'html5s'.freeze
+CONVERTER_FILE = 'lib/asciidoctor/html5s/converter.rb'.freeze
+TEMPLATES_DIR = 'data/templates'.freeze
 
 file CONVERTER_FILE => FileList["#{TEMPLATES_DIR}/*"] do
   build_converter :fast
@@ -23,7 +22,7 @@ namespace :build do
   end
 end
 
-task :build => 'build:converter'
+task build: 'build:converter'
 
 task :clean do
   rm_rf CONVERTER_FILE
@@ -55,22 +54,21 @@ begin
 
   task 'doctest:test' => '.prepare-converter'
   task 'doctest:generate' => '.prepare-converter'
-  task :test => 'doctest:test'
-  task :default => :test
+  task test: 'doctest:test'
+  task default: :test
 rescue LoadError => e
   warn "#{e.path} is not available"
 end
-
 
 def build_converter(mode = :pretty)
   require 'asciidoctor-templates-compiler'
   require 'slim-htag'
 
   generator = if mode == :opal
-    Temple::Generators::ArrayBuffer.new(freeze_static: false)
-  else
-    Temple::Generators::StringBuffer
-  end
+                Temple::Generators::ArrayBuffer.new(freeze_static: false)
+              else
+                Temple::Generators::StringBuffer
+              end
 
   File.open(CONVERTER_FILE, 'w') do |file|
     puts "Generating #{file.path} (mode: #{mode})."
@@ -83,10 +81,10 @@ def build_converter(mode = :pretty)
         basebackend: 'html',
         outfilesuffix: '.html',
         filetype: 'html',
-        supports_templates: true,
+        supports_templates: true
       },
       engine_opts: {
-        generator: generator,
+        generator:
       },
       ignore_convert_opts: (mode == :opal),
       pretty: (mode == :pretty),
