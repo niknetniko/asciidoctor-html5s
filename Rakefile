@@ -61,23 +61,27 @@ task :clobber do
   rm_rf CONVERTER_FILE
 end
 
-DocTest::RakeTasks.new(:doctest) do |t|
-  t.output_examples :html, path: 'test/examples/html5'
-  t.input_examples :asciidoc, path: [
-    *DocTest.examples_path,
-    'test/examples/asciidoc-html'
-  ]
-  t.converter = DocTest::HTML::Converter
-  t.converter_opts = { backend_name: BACKEND_NAME }
+begin
+  DocTest::RakeTasks.new(:doctest) do |t|
+    t.output_examples :html, path: 'test/examples/html5'
+    t.input_examples :asciidoc, path: [
+      *DocTest.examples_path,
+      'test/examples/asciidoc-html'
+    ]
+    t.converter = DocTest::HTML::Converter
+    t.converter_opts = { backend_name: BACKEND_NAME }
+  end
+
+  task '.prepare-converter' do
+    # Run as an external process to ensure that it will not affect tests
+    # environment with extra loaded modules (especially slim).
+    `bundle exec rake build`
+
+    require_relative 'lib/asciidoctor-html5s'
+  end
+
+  task test: %w[clobber .prepare-converter doctest:test]
+  task default: :test
+rescue LoadError => e
+  warn "#{e.path} is not available"
 end
-
-task '.prepare-converter' do
-  # Run as an external process to ensure that it will not affect tests
-  # environment with extra loaded modules (especially slim).
-  `bundle exec rake build`
-
-  require_relative 'lib/asciidoctor-html5s'
-end
-
-task test: %w[clobber .prepare-converter doctest:test]
-task default: :test

@@ -15,11 +15,11 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
   # just like in Haml.
   module Helpers # rubocop:disable Style/ClassAndModuleChildren
     # URIs of external assets.
-    CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs'.freeze
-    FONT_AWESOME_URI     = 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'.freeze
-    HIGHLIGHTJS_BASE_URI = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.1/build/'.freeze
-    KATEX_CSS_URI        = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'.freeze
-    KATEX_JS_URI         = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js'.freeze
+    CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs'
+    FONT_AWESOME_URI     = 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
+    HIGHLIGHTJS_BASE_URI = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.1/build/'
+    KATEX_CSS_URI        = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'
+    KATEX_JS_URI         = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js'
 
     # Defaults
     DEFAULT_HIGHLIGHTJS_THEME = 'github'
@@ -1049,9 +1049,8 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
       ; _buf << ("</a>".freeze); when :ref; 
       ; _buf << ("<a".freeze); _slim_codeattributes3 = id; if _slim_codeattributes3; if _slim_codeattributes3 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes3).to_s); _buf << ("\"".freeze); end; end; _buf << (" aria-hidden=\"true\"></a>".freeze); 
       ; when :bibref; 
-      ; _buf << ("<a".freeze); _slim_codeattributes4 = id; if _slim_codeattributes4; if _slim_codeattributes4 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes4).to_s); _buf << ("\"".freeze); end; end; _buf << (" aria-hidden=\"true\"></a>".freeze); 
-      ; _buf << ((bibref_text).to_s); 
-      ; else; 
+      ; _buf << ("<a".freeze); _slim_codeattributes4 = id; if _slim_codeattributes4; if _slim_codeattributes4 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes4).to_s); _buf << ("\"".freeze); end; end; _buf << (" class=\"bibref\">".freeze); _buf << ((bibref_text).to_s); 
+      ; _buf << ("</a>".freeze); else; 
       ; _buf << ("<a".freeze); _slim_codeattributes5 = id; if _slim_codeattributes5; if _slim_codeattributes5 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes5).to_s); _buf << ("\"".freeze); end; end; _temple_html_attributeremover2 = ''.dup; _slim_codeattributes6 = role; if Array === _slim_codeattributes6; _slim_codeattributes6 = _slim_codeattributes6.flatten; _slim_codeattributes6.map!(&:to_s); _slim_codeattributes6.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes6.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes6).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _buf << (" class=\"".freeze); _buf << ((_temple_html_attributeremover2).to_s); _buf << ("\"".freeze); end; _slim_codeattributes7 = target; if _slim_codeattributes7; if _slim_codeattributes7 == true; _buf << (" href".freeze); else; _buf << (" href=\"".freeze); _buf << ((_slim_codeattributes7).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes8 = (attr :window); if _slim_codeattributes8; if _slim_codeattributes8 == true; _buf << (" target".freeze); else; _buf << (" target=\"".freeze); _buf << ((_slim_codeattributes8).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes9 = link_rel; if _slim_codeattributes9; if _slim_codeattributes9 == true; _buf << (" rel".freeze); else; _buf << (" rel=\"".freeze); _buf << ((_slim_codeattributes9).to_s); _buf << ("\"".freeze); end; end; _slim_codeattributes10 = (attr :title); if _slim_codeattributes10; if _slim_codeattributes10 == true; _buf << (" title".freeze); else; _buf << (" title=\"".freeze); _buf << ((_slim_codeattributes10).to_s); _buf << ("\"".freeze); end; end; _buf << (">".freeze); _buf << ((text).to_s); 
       ; _buf << ("</a>".freeze); end; _buf
     end
