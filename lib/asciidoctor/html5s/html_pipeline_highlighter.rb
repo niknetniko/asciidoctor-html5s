@@ -2,7 +2,6 @@
 
 module Asciidoctor
   module Html5s
-
     # Modification of Asciidoctor::SyntaxHighlighter::HtmlPipelineAdapter that
     # uses attribute `data-lang` instead of `lang`.
     #
@@ -19,14 +18,14 @@ module Asciidoctor
       end
 
       def format(node, lang, _opts)
-        %(<pre><code#{%{ data-lang="#{lang}"} if lang}>#{node.content}</code></pre>)
+        %(<pre><code#{%( data-lang="#{lang}") if lang}>#{node.content}</code></pre>)
       end
 
       # Copied from Asciidoctor::SyntaxHighlighter::HtmlPipelineAdapter#format.
       # Note: HtmlPipelineAdapter is not available in asciidoctor.js, that's why
       # it's done like this instead of delegation or inheritance.
       def format_orig(node, lang, _opts)
-        %(<pre#{%{ lang="#{lang}"} if lang}><code>#{node.content}</code></pre>)
+        %(<pre#{%( lang="#{lang}") if lang}><code>#{node.content}</code></pre>)
       end
     end
   end

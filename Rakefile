@@ -1,21 +1,23 @@
 #!/usr/bin/env rake
+# frozen_string_literal: true
+
 require 'bundler/gem_tasks'
 require 'rake/clean'
 require 'asciidoctor/doctest'
 require 'thread_safe'
 require 'tilt'
 
-BACKEND_NAME = 'html5s'.freeze
-CONVERTER_FILE = 'lib/asciidoctor/html5s/converter.rb'.freeze
-TEMPLATES_DIR = 'data/templates'.freeze
+BACKEND_NAME = 'html5s'
+CONVERTER_FILE = 'lib/asciidoctor/html5s/converter.rb'
+TEMPLATES_DIR = 'data/templates'
 
 namespace :build do
-  file CONVERTER_FILE, FileList["#{TEMPLATES_DIR}/*"] do |t, args|
+  file CONVERTER_FILE, FileList["#{TEMPLATES_DIR}/*"] do |_t, args|
     require 'asciidoctor-templates-compiler'
     require 'slim-htag'
 
     File.open(CONVERTER_FILE, 'w') do |file|
-      $stderr.puts "Generating #{file.path}."
+      warn "Generating #{file.path}."
       Asciidoctor::TemplatesCompiler::Slim.compile_converter(
         templates_dir: TEMPLATES_DIR,
         class_name: 'Asciidoctor::Html5s::Converter',
@@ -27,7 +29,8 @@ namespace :build do
           supports_templates: true
         },
         pretty: (args[:mode] == :pretty),
-        output: file)
+        output: file
+      )
     end
   end
 
@@ -43,7 +46,7 @@ namespace :build do
     end
   end
 
-  task :converter => 'converter:pretty'
+  task converter: 'converter:pretty'
 end
 
 task build: 'build:converter:pretty'
@@ -76,5 +79,5 @@ task '.prepare-converter' do
   require_relative 'lib/asciidoctor-html5s'
 end
 
-task test: ['.prepare-converter', 'doctest:test']
+task test: ['clobber', '.prepare-converter', 'doctest:test']
 task default: :test

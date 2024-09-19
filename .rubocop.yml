@@ -88,3 +88,6 @@ Style/Documentation:
 
 Style/StringConcatenation:
   Enabled: false
+
+Style/Attr:
+  Enabled: false
