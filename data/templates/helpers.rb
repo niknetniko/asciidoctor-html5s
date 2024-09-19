@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'asciidoctor/html5s'
 require 'date' unless RUBY_PLATFORM == 'opal'
 
 # Add custom functions to this module that you want to use in your Slim
 # templates. Within the template you can invoke them as top-level functions
 # just like in Haml.
-module Slim::Helpers
+module Slim::Helpers # rubocop:disable Style/ClassAndModuleChildren
   # URIs of external assets.
-  CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs'.freeze
+  CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs'
   FONT_AWESOME_URI     = 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
   HIGHLIGHTJS_BASE_URI = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.1/build/'
   KATEX_CSS_URI        = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'
@@ -46,7 +48,7 @@ module Slim::Helpers
   JS
 
   VOID_ELEMENTS = %w[area base br col command embed hr img input keygen link
-                     meta param source track wbr]
+                     meta param source track wbr].freeze
 
   # @return [Logger]
   def log
@@ -89,7 +91,7 @@ module Slim::Helpers
   # @return A content of the captured block.
   # @see capture
   def yield_capture(*params)
-    @_html5s_capture.call(*params) if @_html5s_capture
+    @_html5s_capture&.call(*params)
   end
 
   ##
@@ -103,11 +105,11 @@ module Slim::Helpers
   # @return [String] a rendered HTML element.
   #
   def html_tag(name, attributes = {}, content = nil)
-    attrs = attributes.inject([]) do |attrs, (k, v)|
-      next attrs if !v || v.nil_or_empty?
+    attrs = attributes.inject([]) do |attrs_, (k, v)|
+      next attrs_ if !v || v.nil_or_empty?
 
       v = v.compact.join(' ') if v.is_a? Array
-      attrs << (v == true ? k : %(#{k}="#{v}"))
+      attrs_ << (v == true ? k : %(#{k}="#{v}"))
     end
     attrs_str = attrs.empty? ? '' : ' ' + attrs.join(' ')
 
@@ -195,7 +197,7 @@ module Slim::Helpers
   #
   def block_with_title(attrs = {}, title = @title)
     if (klass = attrs[:class]).is_a? String
-      klass = klass.split(' ')
+      klass = klass.split
     end
     attrs[:class] = [klass, role].flatten.uniq
     attrs[:id] = id
@@ -214,7 +216,7 @@ module Slim::Helpers
 
   def block_with_caption(position = :bottom, attrs = {})
     if (klass = attrs[:class]).is_a? String
-      klass = klass.split(' ')
+      klass = klass.split
     end
     attrs[:class] = [klass, role].flatten.uniq
     attrs[:id] = id
@@ -363,7 +365,7 @@ module Slim::Helpers
   # @return [Integer]
   #
   def section_level(sec = self)
-    sec.level == 0 && sec.special ? 1 : sec.level
+    sec.level.zero? && sec.special ? 1 : sec.level
   end
 
   ##
@@ -443,7 +445,7 @@ module Slim::Helpers
   ##
   # @return [String, nil] an URL for the image's link.
   def image_link
-    @_html5s_image_link ||=
+    @image_link ||=
       case (link = attr(:link))
       when 'none', 'false'
         return
@@ -516,7 +518,7 @@ module Slim::Helpers
   # Returns +true+ if an abstract block is allowed in this document type,
   # otherwise prints warning and returns +false+.
   def abstract_allowed?
-    if result = parent == document && document.doctype == 'book'
+    if (result = parent == document && document.doctype == 'book')
       log.warn 'asciidoctor: WARNING: abstract block cannot be used in a document
 without a title when doctype is book. Excluding block content.'
     end
@@ -527,7 +529,7 @@ without a title when doctype is book. Excluding block content.'
   # Returns +true+ if a partintro block is allowed in this context, otherwise
   # prints warning and returns +false+.
   def partintro_allowed?
-    if result = level != 0 || parent.context != :section || document.doctype != 'book'
+    if (result = level != 0 || parent.context != :section || document.doctype != 'book')
       log.warn "asciidoctor: ERROR: partintro block can only be used when doctype
 is book and must be a child of a book part. Excluding block content."
     end
@@ -543,7 +545,7 @@ is book and must be a child of a book part. Excluding block content."
   end
 
   def stretch?
-    return unless !autowidth? || local_attr?('width')
+    return unless !autowidth? || local_attr?('width') # rubocop:disable Style/ReturnNilInPredicateMethodDefinition
 
     'stretch' if attr? :tablepcwidth, 100
   end

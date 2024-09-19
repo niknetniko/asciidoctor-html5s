@@ -74,10 +74,10 @@ end
 task '.prepare-converter' do
   # Run as an external process to ensure that it will not affect tests
   # environment with extra loaded modules (especially slim).
-  `bundle exec rake #{CONVERTER_FILE}`
+  `bundle exec rake build`
 
   require_relative 'lib/asciidoctor-html5s'
 end
 
-task test: ['clobber', '.prepare-converter', 'doctest:test']
+task test: %w[clobber .prepare-converter doctest:test]
 task default: :test
