@@ -6,7 +6,7 @@ require 'date' unless RUBY_PLATFORM == 'opal'
 # just like in Haml.
 module Slim::Helpers
   # URIs of external assets.
-  CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs' # for highlighters in Asciidoctor >=2.0.0
+  CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs'.freeze
   FONT_AWESOME_URI     = 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
   HIGHLIGHTJS_BASE_URI = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.1/build/'
   KATEX_CSS_URI        = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'
@@ -314,7 +314,7 @@ module Slim::Helpers
   # @return value of the attribute or +default_val+ if not found.
   #
   def local_attr(name, default_val = nil)
-    attr_reader(name, default_val, false)
+    attr(name, default_val, false)
   end
 
   ##
@@ -419,13 +419,13 @@ module Slim::Helpers
   ##
   # @return [Boolean] should be this admonition wrapped in aside element?
   def admonition_aside?
-    %w[note tip].include? attr_reader(:name)
+    %w[note tip].include? attr(:name)
   end
 
   ##
   # @return [String, nil] WAI-ARIA role of this admonition.
   def admonition_aria
-    case attr_reader(:name)
+    case attr(:name)
 
     when 'note'
       'note' # https://www.w3.org/TR/wai-aria/roles#note
@@ -444,13 +444,13 @@ module Slim::Helpers
   # @return [String, nil] an URL for the image's link.
   def image_link
     @_html5s_image_link ||=
-      case (link = attr_reader(:link))
+      case (link = attr(:link))
       when 'none', 'false'
         return
       when 'self'
-        image_uri(attr_reader(:target))
+        image_uri(attr(:target))
       when nil, ''
-        image_uri(attr_reader(:target)) if document.attr?('html5s-image-default-link', 'self')
+        image_uri(attr(:target)) if document.attr?('html5s-image-default-link', 'self')
       else
         link
       end
@@ -459,7 +459,7 @@ module Slim::Helpers
   ##
   # @return [String, nil] a label/title of the image link.
   def image_link_label
-    return unless image_uri(attr_reader(:target)) == image_link
+    return unless image_uri(attr(:target)) == image_link
 
     document.attr('html5s-image-self-link-label', 'Open the image in full size')
   end
@@ -554,27 +554,27 @@ is book and must be a child of a book part. Excluding block content."
 
   # @return [Boolean] +true+ if the video should be embedded in an iframe.
   def video_iframe?
-    %w[vimeo youtube].include? attr_reader(:poster)
+    %w[vimeo youtube].include? attr(:poster)
   end
 
   def video_uri
-    case attr_reader(:poster, '').to_sym
+    case attr(:poster, '').to_sym
     when :vimeo
       params = {
         autoplay: (1 if option? 'autoplay'),
         loop: (1 if option? 'loop'),
         muted: (1 if option? 'muted')
       }
-      start_anchor = "#at=#{attr_reader :start}" if attr? :start
-      "//player.vimeo.com/video/#{attr_reader :target}#{start_anchor}#{url_query params}"
+      start_anchor = "#at=#{attr :start}" if attr? :start
+      "//player.vimeo.com/video/#{attr :target}#{start_anchor}#{url_query params}"
 
     when :youtube
-      video_id, list_id = attr_reader(:target).split('/', 2)
+      video_id, list_id = attr(:target).split('/', 2)
       params = {
         rel: 0,
-        start: (attr_reader :start),
-        end: (attr_reader :end),
-        list: (attr_reader :list, list_id),
+        start: (attr :start),
+        end: (attr :end),
+        list: (attr :list, list_id),
         autoplay: (1 if option? 'autoplay'),
         loop: (1 if option? 'loop'),
         muted: (1 if option? 'muted'),
@@ -582,10 +582,10 @@ is book and must be a child of a book part. Excluding block content."
       }
       "//www.youtube.com/embed/#{video_id}#{url_query params}"
     else
-      anchor = [attr_reader(:start), attr_reader(:end)].join(',').chomp(',')
+      anchor = [attr(:start), attr(:end)].join(',').chomp(',')
       anchor = '' if anchor == ',' # XXX: https://github.com/opal/opal/issues/1902
       anchor = '#t=' + anchor unless anchor.empty?
-      media_uri "#{attr_reader :target}#{anchor}"
+      media_uri "#{attr :target}#{anchor}"
     end
   end
 
@@ -630,8 +630,8 @@ is book and must be a child of a book part. Excluding block content."
     styles = []
     tags = []
 
-    stylesheet = attr_reader :stylesheet
-    stylesdir = attr_reader :stylesdir, ''
+    stylesheet = attr :stylesheet
+    stylesdir = attr :stylesdir, ''
     default_style = ::Asciidoctor::DEFAULT_STYLESHEET_KEYS.include? stylesheet
     ss = ::Asciidoctor::Stylesheets.instance
 
@@ -646,9 +646,9 @@ is book and must be a child of a book part. Excluding block content."
 
     if attr? :icons, 'font'
       styles << if attr? 'iconfont-remote'
-                  { href: attr_reader('iconfont-cdn', FONT_AWESOME_URI) }
+                  { href: attr('iconfont-cdn', FONT_AWESOME_URI) }
                 else
-                  { href: [stylesdir, "#{attr_reader 'iconfont-name', 'font-awesome'}.css"] }
+                  { href: [stylesdir, "#{attr 'iconfont-name', 'font-awesome'}.css"] }
                 end
     end
 
@@ -659,8 +659,8 @@ is book and must be a child of a book part. Excluding block content."
     end
 
     if !defined?(::Asciidoctor::SyntaxHighlighter) && attr?('source-highlighter', 'highlightjs')
-      hjs_base = attr_reader :highlightjsdir, HIGHLIGHTJS_BASE_URI
-      hjs_theme = attr_reader 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
+      hjs_base = attr :highlightjsdir, HIGHLIGHTJS_BASE_URI
+      hjs_theme = attr 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
 
       scripts << { src: [hjs_base, 'highlight.min.js'] }
       scripts << { text: 'hljs.initHighlightingOnLoad()' }
@@ -707,10 +707,10 @@ is book and must be a child of a book part. Excluding block content."
       elsif (path = local_attr :path)
         path
       else
-        ref = document.catalog[:refs][attr_reader :refid]
-        ref.xreftext(attr_accessor(:xrefstyle, nil, true)) if ref.is_a? Asciidoctor::AbstractNode
+        ref = document.catalog[:refs][attr :refid]
+        ref.xreftext(attr(:xrefstyle, nil, true)) if ref.is_a? Asciidoctor::AbstractNode
       end
-    (str || "[#{attr_reader :refid}]").tr_s("\n", ' ')
+    (str || "[#{attr :refid}]").tr_s("\n", ' ')
   end
 
   # @return [String, nil] text of the bibref anchor, or +nil+ if not found.
@@ -729,9 +729,9 @@ is book and must be a child of a book part. Excluding block content."
   # @return [Array] style classes for a Font Awesome icon.
   def icon_fa_classes
     ["fa fa-#{target}",
-     ("fa-#{attr_reader :size}" if attr? :size),
-     ("fa-rotate-#{attr_reader :rotate}" if attr? :rotate),
-     ("fa-flip-#{attr_reader :flip}" if attr? :flip)].compact
+     ("fa-#{attr :size}" if attr? :size),
+     ("fa-rotate-#{attr :rotate}" if attr? :rotate),
+     ("fa-flip-#{attr :flip}" if attr? :flip)].compact
   end
 
   #--------------------------------------------------------
@@ -741,14 +741,14 @@ is book and must be a child of a book part. Excluding block content."
   # @param text [String] the text to wrap in double quotes.
   # @return [String] quoted *text*.
   def double_quoted(text)
-    quotes = CURLY_QUOTES[attr_accessor(:lang, DEFAULT_LANG, true)]
+    quotes = CURLY_QUOTES[attr(:lang, DEFAULT_LANG, true)]
     "#{quotes[2]}#{text}#{quotes[3]}"
   end
 
   # @param text [String] the text to wrap in single quotes.
   # @return [String] quoted *text*.
   def single_quoted(text)
-    quotes = CURLY_QUOTES[attr_accessor(:lang, DEFAULT_LANG, true)]
+    quotes = CURLY_QUOTES[attr(:lang, DEFAULT_LANG, true)]
     "#{quotes[0]}#{text}#{quotes[1]}"
   end
 end
