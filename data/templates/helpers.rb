@@ -5,9 +5,8 @@ require 'date' unless RUBY_PLATFORM == 'opal'
 # templates. Within the template you can invoke them as top-level functions
 # just like in Haml.
 module Slim::Helpers
-
   # URIs of external assets.
-  CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs'  # for highlighters in Asciidoctor >=2.0.0
+  CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs' # for highlighters in Asciidoctor >=2.0.0
   FONT_AWESOME_URI     = 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
   HIGHLIGHTJS_BASE_URI = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.1/build/'
   KATEX_CSS_URI        = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'
@@ -20,14 +19,13 @@ module Slim::Helpers
   DEFAULT_TOCLEVELS = 2
 
   CURLY_QUOTES = [
-    [%w[af en eo ga hi ia id ko mt th tr zh], ['&#x2018;', '&#x2019;', '&#x201c;', '&#x201d;']],  # ‘…’ “…”
-    [%w[bs fi sv], ['&#x2019;', '&#x2019;', '&#x201d;', '&#x201d;']],  # ’…’ ”…”
-    [%w[cs da de is lt sl sk sr], ['&#x201a;', '&#x2018;', '&#x201e;', '&#x201c;']],  # ‚…‘ „…“
-    [%w[nl], ['&#x201a;', '&#x2019;', '&#x201e;', '&#x201d;']],  # ‚…’ „…”
-    [%w[hu pl ro], ['&#x00ab;', '&#x00bb;', '&#x201e;', '&#x201d;']],  # «…» „…”
-  ].reduce({}) do |hsh, (langs, codes)|
+    [%w[af en eo ga hi ia id ko mt th tr zh], ['&#x2018;', '&#x2019;', '&#x201c;', '&#x201d;']], # ‘…’ “…”
+    [%w[bs fi sv], ['&#x2019;', '&#x2019;', '&#x201d;', '&#x201d;']], # ’…’ ”…”
+    [%w[cs da de is lt sl sk sr], ['&#x201a;', '&#x2018;', '&#x201e;', '&#x201c;']], # ‚…‘ „…“
+    [%w[nl], ['&#x201a;', '&#x2019;', '&#x201e;', '&#x201d;']], # ‚…’ „…”
+    [%w[hu pl ro], ['&#x00ab;', '&#x00bb;', '&#x201e;', '&#x201d;']] # «…» „…”
+  ].each_with_object({}) do |(langs, codes), hsh|
     langs.each { |lang| hsh[lang] = codes }
-    hsh
   end
   CURLY_QUOTES.default = CURLY_QUOTES[DEFAULT_LANG]
 
@@ -47,9 +45,8 @@ module Slim::Helpers
     });
   JS
 
-  VOID_ELEMENTS = %w(area base br col command embed hr img input keygen link
-                     meta param source track wbr)
-
+  VOID_ELEMENTS = %w[area base br col command embed hr img input keygen link
+                     meta param source track wbr]
 
   # @return [Logger]
   def log
@@ -108,6 +105,7 @@ module Slim::Helpers
   def html_tag(name, attributes = {}, content = nil)
     attrs = attributes.inject([]) do |attrs, (k, v)|
       next attrs if !v || v.nil_or_empty?
+
       v = v.compact.join(' ') if v.is_a? Array
       attrs << (v == true ? k : %(#{k}="#{v}"))
     end
@@ -151,9 +149,9 @@ module Slim::Helpers
   # @yield (see #html_tag)
   # @return [String] a rendered HTML fragment.
   #
-  def html_tag_if(condition, name, attributes = {}, content = nil, &block)
+  def html_tag_if(condition, name, attributes = {}, content = nil, &)
     if condition
-      html_tag name, attributes, content, &block
+      html_tag(name, attributes, content, &)
     else
       content || yield
     end
@@ -195,7 +193,7 @@ module Slim::Helpers
   # @yield The block of Slim/HTML code within the tag (optional).
   # @return [String] a rendered HTML fragment.
   #
-  def block_with_title(attrs = {}, title = @title, &block)
+  def block_with_title(attrs = {}, title = @title)
     if (klass = attrs[:class]).is_a? String
       klass = klass.split(' ')
     end
@@ -205,16 +203,16 @@ module Slim::Helpers
     if title.nil_or_empty?
       # XXX quick hack
       nested = is_a?(::Asciidoctor::List) &&
-          (parent.is_a?(::Asciidoctor::ListItem) || parent.is_a?(::Asciidoctor::List))
+               (parent.is_a?(::Asciidoctor::ListItem) || parent.is_a?(::Asciidoctor::List))
       html_tag_if !nested, :div, attrs, yield
     else
       html_tag :section, attrs do
-        [html_tag(:h6, {class: 'block-title'}, title), yield].join("\n")
+        [html_tag(:h6, { class: 'block-title' }, title), yield].join("\n")
       end
     end
   end
 
-  def block_with_caption(position = :bottom, attrs = {}, &block)
+  def block_with_caption(position = :bottom, attrs = {})
     if (klass = attrs[:class]).is_a? String
       klass = klass.split(' ')
     end
@@ -243,9 +241,7 @@ module Slim::Helpers
   # @return [String] the delimited equation.
   #
   def delimit_stem(equation, type)
-    if (@_html5s_stem_type ||= document.attr('html5s-force-stem-type'))
-      type = @_html5s_stem_type
-    end
+    type = @_html5s_stem_type if @_html5s_stem_type ||= document.attr('html5s-force-stem-type')
 
     if is_a? ::Asciidoctor::Block
       open, close = ::Asciidoctor::BLOCK_MATH_DELIMITERS[type.to_sym]
@@ -253,9 +249,7 @@ module Slim::Helpers
       open, close = ::Asciidoctor::INLINE_MATH_DELIMITERS[type.to_sym]
     end
 
-    if !equation.start_with?(open) || !equation.end_with?(close)
-      equation = [open, equation, close].join
-    end
+    equation = [open, equation, close].join if !equation.start_with?(open) || !equation.end_with?(close)
     equation
   end
 
@@ -290,6 +284,7 @@ module Slim::Helpers
       if value.is_a? Array
         value, unit = value
         next if value.nil?
+
         value = value.to_s + unit unless value.end_with? unit
       end
       prop = prop.to_s.gsub('_', '-')
@@ -308,7 +303,6 @@ module Slim::Helpers
     normalize_web_path path
   end
 
-
   ##
   # Gets the value of the specified attribute in this node.
   #
@@ -320,7 +314,7 @@ module Slim::Helpers
   # @return value of the attribute or +default_val+ if not found.
   #
   def local_attr(name, default_val = nil)
-    attr(name, default_val, false)
+    attr_reader(name, default_val, false)
   end
 
   ##
@@ -359,7 +353,7 @@ module Slim::Helpers
 
   def print_item_content(item)
     wrap = item.blocks? && !item.blocks.all? { |b| b.is_a? ::Asciidoctor::List }
-    [ (html_tag_if(wrap, :p) { item.text } if item.text?), item.content ].join
+    [(html_tag_if(wrap, :p) { item.text } if item.text?), item.content].join
   end
 
   ##
@@ -369,7 +363,7 @@ module Slim::Helpers
   # @return [Integer]
   #
   def section_level(sec = self)
-    (sec.level == 0 && sec.special) ? 1 : sec.level
+    sec.level == 0 && sec.special ? 1 : sec.level
   end
 
   ##
@@ -396,7 +390,7 @@ module Slim::Helpers
       end
 
     if drop_anchors && title.include?('<a')
-      title.gsub(/<(?:a[^>+]+|\/a)>/, '')
+      title.gsub(%r{<(?:a[^>+]+|/a)>}, '')
     else
       title
     end
@@ -425,19 +419,20 @@ module Slim::Helpers
   ##
   # @return [Boolean] should be this admonition wrapped in aside element?
   def admonition_aside?
-    %w[note tip].include? attr(:name)
+    %w[note tip].include? attr_reader(:name)
   end
 
   ##
   # @return [String, nil] WAI-ARIA role of this admonition.
   def admonition_aria
-    case attr(:name)
+    case attr_reader(:name)
+
     when 'note'
-      'note'  # https://www.w3.org/TR/wai-aria/roles#note
+      'note' # https://www.w3.org/TR/wai-aria/roles#note
     when 'tip'
-      'doc-tip'  # https://www.w3.org/TR/dpub-aria-1.0/#doc-tip
+      'doc-tip' # https://www.w3.org/TR/dpub-aria-1.0/#doc-tip
     when 'caution', 'important', 'warning'
-      'doc-notice'  # https://www.w3.org/TR/dpub-aria-1.0/#doc-notice
+      'doc-notice' # https://www.w3.org/TR/dpub-aria-1.0/#doc-notice
     end
   end
 
@@ -449,13 +444,13 @@ module Slim::Helpers
   # @return [String, nil] an URL for the image's link.
   def image_link
     @_html5s_image_link ||=
-      case (link = attr(:link))
+      case (link = attr_reader(:link))
       when 'none', 'false'
         return
       when 'self'
-        image_uri(attr(:target))
+        image_uri(attr_reader(:target))
       when nil, ''
-        image_uri(attr(:target)) if document.attr?('html5s-image-default-link', 'self')
+        image_uri(attr_reader(:target)) if document.attr?('html5s-image-default-link', 'self')
       else
         link
       end
@@ -464,9 +459,9 @@ module Slim::Helpers
   ##
   # @return [String, nil] a label/title of the image link.
   def image_link_label
-    if image_uri(attr(:target)) == image_link
-      document.attr('html5s-image-self-link-label', 'Open the image in full size')
-    end
+    return unless image_uri(attr_reader(:target)) == image_link
+
+    document.attr('html5s-image-self-link-label', 'Open the image in full size')
   end
 
   #--------------------------------------------------------
@@ -521,7 +516,7 @@ module Slim::Helpers
   # Returns +true+ if an abstract block is allowed in this document type,
   # otherwise prints warning and returns +false+.
   def abstract_allowed?
-    if result = (parent == document && document.doctype == 'book')
+    if result = parent == document && document.doctype == 'book'
       log.warn 'asciidoctor: WARNING: abstract block cannot be used in a document
 without a title when doctype is book. Excluding block content.'
     end
@@ -532,7 +527,7 @@ without a title when doctype is book. Excluding block content.'
   # Returns +true+ if a partintro block is allowed in this context, otherwise
   # prints warning and returns +false+.
   def partintro_allowed?
-    if result = (level != 0 || parent.context != :section || document.doctype != 'book')
+    if result = level != 0 || parent.context != :section || document.doctype != 'book'
       log.warn "asciidoctor: ERROR: partintro block can only be used when doctype
 is book and must be a child of a book part. Excluding block content."
     end
@@ -548,9 +543,9 @@ is book and must be a child of a book part. Excluding block content."
   end
 
   def stretch?
-    if !autowidth? || local_attr?('width')
-      'stretch' if attr? :tablepcwidth, 100
-    end
+    return unless !autowidth? || local_attr?('width')
+
+    'stretch' if attr? :tablepcwidth, 100
   end
 
   #--------------------------------------------------------
@@ -559,47 +554,48 @@ is book and must be a child of a book part. Excluding block content."
 
   # @return [Boolean] +true+ if the video should be embedded in an iframe.
   def video_iframe?
-    ['vimeo', 'youtube'].include? attr(:poster)
+    %w[vimeo youtube].include? attr_reader(:poster)
   end
 
   def video_uri
-    case attr(:poster, '').to_sym
+    case attr_reader(:poster, '').to_sym
     when :vimeo
       params = {
         autoplay: (1 if option? 'autoplay'),
-        loop:     (1 if option? 'loop'),
-        muted:    (1 if option? 'muted')
+        loop: (1 if option? 'loop'),
+        muted: (1 if option? 'muted')
       }
-      start_anchor = "#at=#{attr :start}" if attr? :start
-      "//player.vimeo.com/video/#{attr :target}#{start_anchor}#{url_query params}"
+      start_anchor = "#at=#{attr_reader :start}" if attr? :start
+      "//player.vimeo.com/video/#{attr_reader :target}#{start_anchor}#{url_query params}"
 
     when :youtube
-      video_id, list_id = attr(:target).split('/', 2)
+      video_id, list_id = attr_reader(:target).split('/', 2)
       params = {
-        rel:      0,
-        start:    (attr :start),
-        end:      (attr :end),
-        list:     (attr :list, list_id),
+        rel: 0,
+        start: (attr_reader :start),
+        end: (attr_reader :end),
+        list: (attr_reader :list, list_id),
         autoplay: (1 if option? 'autoplay'),
-        loop:     (1 if option? 'loop'),
-        muted:    (1 if option? 'muted'),
+        loop: (1 if option? 'loop'),
+        muted: (1 if option? 'muted'),
         controls: (0 if option? 'nocontrols')
       }
       "//www.youtube.com/embed/#{video_id}#{url_query params}"
     else
-      anchor = [attr(:start), attr(:end)].join(',').chomp(',')
-      anchor = '' if anchor == ','  # XXX: https://github.com/opal/opal/issues/1902
+      anchor = [attr_reader(:start), attr_reader(:end)].join(',').chomp(',')
+      anchor = '' if anchor == ',' # XXX: https://github.com/opal/opal/issues/1902
       anchor = '#t=' + anchor unless anchor.empty?
-      media_uri "#{attr :target}#{anchor}"
+      media_uri "#{attr_reader :target}#{anchor}"
     end
   end
 
   # Formats URL query parameters.
   def url_query(params)
-    str = params.map { |k, v|
+    str = params.map do |k, v|
       next if v.nil? || v.to_s.empty?
-      [k, v] * '='
-    }.compact.join('&amp;')
+
+      [k, v].join('=')
+    end.compact.join('&amp;')
 
     '?' + str unless str.empty?
   end
@@ -634,8 +630,8 @@ is book and must be a child of a book part. Excluding block content."
     styles = []
     tags = []
 
-    stylesheet = attr :stylesheet
-    stylesdir = attr :stylesdir, ''
+    stylesheet = attr_reader :stylesheet
+    stylesdir = attr_reader :stylesdir, ''
     default_style = ::Asciidoctor::DEFAULT_STYLESHEET_KEYS.include? stylesheet
     ss = ::Asciidoctor::Stylesheets.instance
 
@@ -649,11 +645,11 @@ is book and must be a child of a book part. Excluding block content."
     end
 
     if attr? :icons, 'font'
-      if attr? 'iconfont-remote'
-        styles << { href: attr('iconfont-cdn', FONT_AWESOME_URI) }
-      else
-        styles << { href: [stylesdir, "#{attr 'iconfont-name', 'font-awesome'}.css"] }
-      end
+      styles << if attr? 'iconfont-remote'
+                  { href: attr_reader('iconfont-cdn', FONT_AWESOME_URI) }
+                else
+                  { href: [stylesdir, "#{attr_reader 'iconfont-name', 'font-awesome'}.css"] }
+                end
     end
 
     if attr? 'stem'
@@ -662,36 +658,34 @@ is book and must be a child of a book part. Excluding block content."
       scripts << { text: KATEX_RENDER_CODE }
     end
 
-    if !defined?(::Asciidoctor::SyntaxHighlighter)  # Asciidoctor <2.0.0
-      if attr? 'source-highlighter', 'highlightjs'
-        hjs_base = attr :highlightjsdir, HIGHLIGHTJS_BASE_URI
-        hjs_theme = attr 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
+    if !defined?(::Asciidoctor::SyntaxHighlighter) && attr?('source-highlighter', 'highlightjs')
+      hjs_base = attr_reader :highlightjsdir, HIGHLIGHTJS_BASE_URI
+      hjs_theme = attr_reader 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
 
-        scripts << { src: [hjs_base, 'highlight.min.js'] }
-        scripts << { text: 'hljs.initHighlightingOnLoad()' }
-        styles  << { href: [hjs_base, "styles/#{hjs_theme}.min.css"] }
-      end
+      scripts << { src: [hjs_base, 'highlight.min.js'] }
+      scripts << { text: 'hljs.initHighlightingOnLoad()' }
+      styles  << { href: [hjs_base, "styles/#{hjs_theme}.min.css"] }
     end
 
     styles.each do |item|
-      if item.key?(:text)
-        tags << html_tag(:style) { item[:text] }
-      else
-        tags << html_tag(:link, rel: 'stylesheet', href: urlize(*item[:href]))
-      end
+      tags << if item.key?(:text)
+                html_tag(:style) { item[:text] }
+              else
+                html_tag(:link, rel: 'stylesheet', href: urlize(*item[:href]))
+              end
     end
 
     scripts.each do |item|
-      if item.key? :text
-        tags << html_tag(:script, type: item[:type]) { item[:text] }
-      else
-        tags << html_tag(:script, type: item[:type], src: urlize(*item[:src]))
-      end
+      tags << if item.key? :text
+                html_tag(:script, type: item[:type]) { item[:text] }
+              else
+                html_tag(:script, type: item[:type], src: urlize(*item[:src]))
+              end
     end
 
-    if defined?(::Asciidoctor::SyntaxHighlighter) && (hl = syntax_highlighter)  # Asciidoctor >=2.0.0
+    if defined?(::Asciidoctor::SyntaxHighlighter) && (hl = syntax_highlighter) # Asciidoctor >=2.0.0
       # XXX: We don't care about the declared location and put all to head.
-      [:head, :footer].each do |location|
+      %i[head footer].each do |location|
         if hl.docinfo?(location)
           tags << hl.docinfo(location, self, cdn_base_url: CDN_BASE_URI, linkcss: attr?(:linkcss))
         end
@@ -713,19 +707,17 @@ is book and must be a child of a book part. Excluding block content."
       elsif (path = local_attr :path)
         path
       else
-        ref = document.catalog[:refs][attr :refid]
-        if ref.kind_of? Asciidoctor::AbstractNode
-          ref.xreftext(attr(:xrefstyle, nil, true))
-        end
+        ref = document.catalog[:refs][attr_reader :refid]
+        ref.xreftext(attr_accessor(:xrefstyle, nil, true)) if ref.is_a? Asciidoctor::AbstractNode
       end
-    (str || "[#{attr :refid}]").tr_s("\n", ' ')
+    (str || "[#{attr_reader :refid}]").tr_s("\n", ' ')
   end
 
   # @return [String, nil] text of the bibref anchor, or +nil+ if not found.
   def bibref_text
     if ::Asciidoctor::VERSION[0] == '1'
       text
-    else  # Asciidoctor >= 2.0.0
+    else # Asciidoctor >= 2.0.0
       "[#{reftext || id}]"
     end
   end
@@ -736,11 +728,10 @@ is book and must be a child of a book part. Excluding block content."
 
   # @return [Array] style classes for a Font Awesome icon.
   def icon_fa_classes
-    [ "fa fa-#{target}",
-      ("fa-#{attr :size}" if attr? :size),
-      ("fa-rotate-#{attr :rotate}" if attr? :rotate),
-      ("fa-flip-#{attr :flip}" if attr? :flip)
-    ].compact
+    ["fa fa-#{target}",
+     ("fa-#{attr_reader :size}" if attr? :size),
+     ("fa-rotate-#{attr_reader :rotate}" if attr? :rotate),
+     ("fa-flip-#{attr_reader :flip}" if attr? :flip)].compact
   end
 
   #--------------------------------------------------------
@@ -750,14 +741,14 @@ is book and must be a child of a book part. Excluding block content."
   # @param text [String] the text to wrap in double quotes.
   # @return [String] quoted *text*.
   def double_quoted(text)
-    quotes = CURLY_QUOTES[attr(:lang, DEFAULT_LANG, true)]
+    quotes = CURLY_QUOTES[attr_accessor(:lang, DEFAULT_LANG, true)]
     "#{quotes[2]}#{text}#{quotes[3]}"
   end
 
   # @param text [String] the text to wrap in single quotes.
   # @return [String] quoted *text*.
   def single_quoted(text)
-    quotes = CURLY_QUOTES[attr(:lang, DEFAULT_LANG, true)]
+    quotes = CURLY_QUOTES[attr_accessor(:lang, DEFAULT_LANG, true)]
     "#{quotes[0]}#{text}#{quotes[1]}"
   end
 end
