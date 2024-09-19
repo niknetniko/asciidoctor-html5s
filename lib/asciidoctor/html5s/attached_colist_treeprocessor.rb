@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 require 'asciidoctor/html5s/version'
 require 'asciidoctor/extensions' unless RUBY_PLATFORM == 'opal'
 
 module Asciidoctor::Html5s
-
   # This extension moves every callout list immediately following listing block
   # to instance variable +@html5s_colist+ inside the listing block.
   # The aim is to render callout list as part of the corresponding listing.
   class AttachedColistTreeprocessor < ::Asciidoctor::Extensions::Treeprocessor
-
     def process(document)
       return if document.backend != 'html5s'
 

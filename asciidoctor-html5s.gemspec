@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   EOF
 
   s.files = Dir['data/**/*', 'lib/**/*', '*.gemspec', 'LICENSE*', 'README.adoc']
+  s.require_paths = ['lib']
 
   s.required_ruby_version = '>= 2.0'
 
