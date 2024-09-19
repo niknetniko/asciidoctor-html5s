@@ -9,8 +9,7 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 3.1
   Exclude:
-    # This is a generated file.
-    - 'lib/asciidoctor/html5s/converter.rb'
+  - lib/asciidoctor/html5s/converter.rb
 
 Gemspec/DevelopmentDependencies:
   EnforcedStyle: gemspec
@@ -24,11 +23,11 @@ Lint/DuplicateMethods:
 Metrics/AbcSize:
   Enabled: false
 
-Metrics/ClassLength:
-  Max: 200
-
 Metrics/BlockLength:
   Max: 35
+
+Metrics/ClassLength:
+  Max: 200
 
 Metrics/CyclomaticComplexity:
   Enabled: false
@@ -38,9 +37,6 @@ Metrics/MethodLength:
 
 Metrics/ModuleLength:
   Max: 400
-
-Naming/MethodName:
-  Enabled: false
 
 Metrics/PerceivedComplexity:
   Enabled: false
@@ -52,9 +48,8 @@ Naming/FileName:
 Naming/HeredocDelimiterNaming:
   Enabled: false
 
-RSpec/ContextWording:
-  AllowedPatterns:
-  - "^and"
+Naming/MethodName:
+  Enabled: false
 
 RSpec/ExampleLength:
   Enabled: false
@@ -89,11 +84,11 @@ RSpec/VerifiedDoubleReference:
 Rake/Desc:
   Enabled: false
 
+Style/Attr:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
 Style/StringConcatenation:
-  Enabled: false
-
-Style/Attr:
   Enabled: false
