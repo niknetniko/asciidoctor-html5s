@@ -6,5 +6,8 @@
         title=((document.attr 'view-footnote', "View footnote") + " #{index}")
         role='doc-noteref' ]
       | #{index}
+  span class="marginalia"
+    sup #{index}
+    | &nbsp;#{text}
 - else
   a.footnote-ref.broken title="Unresolved footnote reference." [#{text}]

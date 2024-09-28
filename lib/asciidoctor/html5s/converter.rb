@@ -1097,7 +1097,10 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
       ; 
       ; _slim_codeattributes1 = (footnoteref_id unless type == :xref); if _slim_codeattributes1; if _slim_codeattributes1 == true; _buf << (" id".freeze); else; _buf << (" id=\"".freeze); _buf << ((_slim_codeattributes1).to_s); _buf << ("\"".freeze); end; end; _buf << (" href=\"#".freeze); _buf << ((footnote_id).to_s); _buf << ("\"".freeze); _slim_codeattributes2 = ((document.attr 'view-footnote', "View footnote") + " #{index}"); if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" title".freeze); else; _buf << (" title=\"".freeze); _buf << ((_slim_codeattributes2).to_s); _buf << ("\"".freeze); end; end; _buf << (" role=\"doc-noteref\">".freeze); 
       ; _buf << ((index).to_s); 
-      ; _buf << ("</a></sup>".freeze); else; 
+      ; _buf << ("</a></sup><span class=\"marginalia\"><sup>".freeze); 
+      ; _buf << ((index).to_s); _buf << ("</sup>&nbsp;".freeze); 
+      ; _buf << ((text).to_s); 
+      ; _buf << ("</span>".freeze); else; 
       ; _buf << ("<a class=\"footnote-ref broken\" title=\"Unresolved footnote reference.\">[".freeze); _buf << ((text).to_s); _buf << ("]</a>".freeze); 
       ; end; _buf
     end
