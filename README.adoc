@@ -112,6 +112,11 @@ When flanked by space characters (e.g. `+a -- b+` or `+a --- b+`), the normal sp
 
 == Other Enhancements
 
+=== Margin notes
+
+Inline footnotes are also rendered in-place with `<span class="marginalia">...</span>` to allow for margin notes.
+The footnotes are also rendered at the bottom as is traditional; this allows using those on smaller screens.
+
 === Image Block
 
 The `link` attribute recognizes few special values:
