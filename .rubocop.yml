@@ -10,6 +10,7 @@ AllCops:
   TargetRubyVersion: 3.1
   Exclude:
   - lib/asciidoctor/html5s/converter.rb
+  - vendor/
 
 Gemspec/DevelopmentDependencies:
   EnforcedStyle: gemspec
