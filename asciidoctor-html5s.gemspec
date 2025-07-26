@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 3.1'
 
-  s.add_dependency 'asciidoctor', '>= 1.5.7', '< 3.0'
+  s.add_dependency 'asciidoctor', '>= 2.0.0', '< 3.0'
   s.add_dependency 'thread_safe', '~> 0.3'
 
   s.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.beta.7'

@@ -7,7 +7,6 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
   - document_content = content
   head
     meta charset=(attr :encoding, 'UTF-8')
-    meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     meta name='generator' content="Asciidoctor #{attr 'asciidoctor-version'}"
     = html_meta_if 'application-name', (attr 'app-name')
@@ -15,22 +14,22 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     = html_meta_if 'copyright', (attr :copyright)
     = html_meta_if 'description', (attr :description)
     = html_meta_if 'keywords', (attr :keywords)
-    title=((doctitle sanitize: true) || (attr 'untitled-label'))
+    title= ((doctitle sanitize: true) || (attr 'untitled-label'))
     = styles_and_scripts
     - unless (docinfo_content = docinfo).empty?
-      =docinfo_content
+      = docinfo_content
   body [
-      id=id
-      class=[(attr :doctype),
-             ("#{attr 'toc-class'} toc-#{attr 'toc-position', 'left'}" if (attr? 'toc-class') && (attr? :toc) && (attr? 'toc-placement', 'auto')),
-             (attr :docrole) || (attr :role)]
-      style=style_value(max_width: (attr 'max-width')) ]
+    id=id
+    class=[(attr :doctype),
+      ("#{attr 'toc-class'} toc-#{attr 'toc-position', 'left'}" if (attr? 'toc-class') && (attr? :toc) && (attr? 'toc-placement', 'auto')),
+      (attr :docrole) || (attr :role)]
+    style= style_value(max_width: (attr 'max-width')) ]
     - unless (docinfo_content = (docinfo :header)).empty?
-      =docinfo_content
+      = docinfo_content
     - unless noheader
       header
         include _header.html
-    #content =document_content
+    #content = document_content
     - unless !footnotes? || (attr? :nofootnotes)
       include _footnotes.html
     - unless nofooter

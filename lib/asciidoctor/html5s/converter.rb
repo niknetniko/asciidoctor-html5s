@@ -8,21 +8,13 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
   # frozen_string_literal: true
 
   require 'asciidoctor/html5s'
-  require 'date' unless RUBY_PLATFORM == 'opal'
+  require 'date'
 
   # Add custom functions to this module that you want to use in your Slim
   # templates. Within the template you can invoke them as top-level functions
   # just like in Haml.
   module Helpers # rubocop:disable Style/ClassAndModuleChildren
-    # URIs of external assets.
-    CDN_BASE_URI         = 'https://cdnjs.cloudflare.com/ajax/libs'
-    FONT_AWESOME_URI     = 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
-    HIGHLIGHTJS_BASE_URI = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.1/build/'
-    KATEX_CSS_URI        = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'
-    KATEX_JS_URI         = 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js'
-
     # Defaults
-    DEFAULT_HIGHLIGHTJS_THEME = 'github'
     DEFAULT_LANG = 'en'
     DEFAULT_SECTNUMLEVELS = 3
     DEFAULT_TOCLEVELS = 2
@@ -38,26 +30,9 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
     end
     CURLY_QUOTES.default = CURLY_QUOTES[DEFAULT_LANG]
 
-    KATEX_RENDER_CODE = <<-JS.gsub(/\s+/, ' ')
-      document.addEventListener("DOMContentLoaded", function() {
-        var elements = document.getElementsByClassName("math");
-        for (var i = 0; i < elements.length; i++) {
-          var el = elements[i];
-          if (el.getAttribute("data-lang") !== "tex") {
-            continue;
-          }
-          katex.render(el.textContent.slice(2, -2), el, {
-            "displayMode": el.nodeName.toUpperCase() !== "SPAN",
-            "throwOnError": false,
-          });
-        }
-      });
-    JS
-
     VOID_ELEMENTS = %w[area base br col command embed hr img input keygen link
                        meta param source track wbr].freeze
 
-    # @return [Logger]
     def log
       ::Asciidoctor::LoggerManager.logger
     end
@@ -232,7 +207,8 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
         html_tag :div, attrs, yield
       else
         html_tag :figure, attrs do
-          ary = [yield, html_tag(:figcaption) { captioned_title }]
+          caption_title = html_tag(:span, { class: 'figure-caption-label' }, @caption) if @caption
+          ary = [yield, html_tag(:figcaption) { %(#{caption_title}#{title}) }]
           ary.reverse! if position == :top
           ary.compact.join("\n")
         end
@@ -653,29 +629,6 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
         styles << { text: read_asset(normalize_system_path(stylesheet, stylesdir), true) }
       end
 
-      if attr? :icons, 'font'
-        styles << if attr? 'iconfont-remote'
-                    { href: attr('iconfont-cdn', FONT_AWESOME_URI) }
-                  else
-                    { href: [stylesdir, "#{attr 'iconfont-name', 'font-awesome'}.css"] }
-                  end
-      end
-
-      if attr? 'stem'
-        styles << { href: KATEX_CSS_URI }
-        scripts << { src: KATEX_JS_URI }
-        scripts << { text: KATEX_RENDER_CODE }
-      end
-
-      if !defined?(::Asciidoctor::SyntaxHighlighter) && attr?('source-highlighter', 'highlightjs')
-        hjs_base = attr :highlightjsdir, HIGHLIGHTJS_BASE_URI
-        hjs_theme = attr 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
-
-        scripts << { src: [hjs_base, 'highlight.min.js'] }
-        scripts << { text: 'hljs.initHighlightingOnLoad()' }
-        styles  << { href: [hjs_base, "styles/#{hjs_theme}.min.css"] }
-      end
-
       styles.each do |item|
         tags << if item.key?(:text)
                   html_tag(:style) { item[:text] }
@@ -690,15 +643,6 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
                 else
                   html_tag(:script, type: item[:type], src: urlize(*item[:src]))
                 end
-      end
-
-      if defined?(::Asciidoctor::SyntaxHighlighter) && (hl = syntax_highlighter) # Asciidoctor >=2.0.0
-        # XXX: We don't care about the declared location and put all to head.
-        %i[head footer].each do |location|
-          if hl.docinfo?(location)
-            tags << hl.docinfo(location, self, cdn_base_url: CDN_BASE_URI, linkcss: attr?(:linkcss))
-          end
-        end
       end
 
       tags.join("\n")
@@ -870,8 +814,7 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
       ; 
       ; document_content = content; 
       ; _buf << ("<head><meta".freeze); 
-      ; _slim_codeattributes2 = (attr :encoding, 'UTF-8'); if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" charset".freeze); else; _buf << (" charset=\"".freeze); _buf << ((_slim_codeattributes2).to_s); _buf << ("\"".freeze); end; end; _buf << ("><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"generator\" content=\"Asciidoctor ".freeze); 
-      ; 
+      ; _slim_codeattributes2 = (attr :encoding, 'UTF-8'); if _slim_codeattributes2; if _slim_codeattributes2 == true; _buf << (" charset".freeze); else; _buf << (" charset=\"".freeze); _buf << ((_slim_codeattributes2).to_s); _buf << ("\"".freeze); end; end; _buf << ("><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"generator\" content=\"Asciidoctor ".freeze); 
       ; 
       ; _buf << ((attr 'asciidoctor-version').to_s); _buf << ("\">".freeze); 
       ; _buf << ((html_meta_if 'application-name', (attr 'app-name')).to_s); 
