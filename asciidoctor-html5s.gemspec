@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'asciidoctor', '>= 2.0.0', '< 3.0'
   s.add_dependency 'thread_safe', '~> 0.3'
 
-  s.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.beta.7'
+  s.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.rc.1'
   s.add_development_dependency 'asciidoctor-templates-compiler', '~> 0.7'
   s.add_development_dependency 'bundler', '>= 1.6'
   s.add_development_dependency 'pandoc-ruby', '~> 2.0'
