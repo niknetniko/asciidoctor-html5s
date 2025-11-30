@@ -563,7 +563,8 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
           autoplay: (1 if option? 'autoplay'),
           loop: (1 if option? 'loop'),
           muted: (1 if option? 'muted'),
-          controls: (0 if option? 'nocontrols')
+          controls: (0 if option? 'nocontrols'),
+          hl: (attr :lang)
         }
         "//www.youtube.com/embed/#{video_id}#{url_query params}"
       else
