@@ -11,5 +11,4 @@ require 'asciidoctor/extensions'
 
 Asciidoctor::Extensions.register do
   treeprocessor Asciidoctor::Html5s::AttachedColistTreeprocessor
-  treeprocessor Asciidoctor::Html5s::SmallCapsTreeprocessor
 end

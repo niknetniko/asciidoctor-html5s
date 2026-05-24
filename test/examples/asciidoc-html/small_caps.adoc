@@ -1,0 +1,49 @@
+// .single-word
+:html5s-small-caps: TypeScript
+
+Use TypeScript today.
+
+// .multiple-words
+:html5s-small-caps: TypeScript, JavaScript
+
+Use TypeScript or JavaScript today.
+
+// .section-heading
+:html5s-small-caps: TypeScript
+
+== TypeScript Development
+
+// .block-title
+:html5s-small-caps: TypeScript
+
+.TypeScript Example
+====
+Some content.
+====
+
+// .image-caption
+:html5s-small-caps: TypeScript
+
+.A TypeScript screenshot
+image::sunset.jpg[]
+
+// .list-item
+:html5s-small-caps: TypeScript
+
+* Use TypeScript today
+* Avoid plain JavaScript
+
+// .dlist-term
+:html5s-small-caps: TypeScript
+
+TypeScript:: A typed superset of JavaScript.
+
+// .not-in-inline-code
+:html5s-small-caps: TypeScript
+
+Use `TypeScript` today.
+
+// .not-in-alt-text
+:html5s-small-caps: TypeScript
+
+image::sunset.jpg[TypeScript screenshot]
