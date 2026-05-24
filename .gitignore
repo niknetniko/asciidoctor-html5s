@@ -8,3 +8,4 @@ README.md
 package-lock.json
 yarn.lock
 #lib/asciidoctor/html5s/converter.rb
+/asciidoctor-html5s.iml
