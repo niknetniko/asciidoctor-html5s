@@ -47,3 +47,13 @@ Use `TypeScript` today.
 :html5s-small-caps: TypeScript
 
 image::sunset.jpg[TypeScript screenshot]
+
+// .not-in-role-name
+:html5s-small-caps: TypeScript
+
+[.TypeScript]#some text#
+
+// .not-in-href
+:html5s-small-caps: TypeScript
+
+link:https://TypeScript.org[Visit site]
