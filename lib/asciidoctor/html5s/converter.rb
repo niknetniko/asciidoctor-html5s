@@ -422,6 +422,45 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
     end
 
     #--------------------------------------------------------
+    # block_image / inline_image (SVG support)
+    #
+
+    SVG_PREAMBLE_RX = /\A.*?(?=<svg[\s>])/m
+    SVG_START_TAG_RX = /\A<svg(?:\s[^>]*)?>/
+    SVG_DIMENSION_ATTR_RX = /\s(?:width|height|style)=(["']).*?\1/
+
+    # @return [Boolean] true if this image targets an SVG in a non-secure document.
+    def svg_image?(target = attr(:target))
+      (target.end_with?('.svg') || attr?(:format, 'svg')) &&
+        document.safe < ::Asciidoctor::SafeMode::SECURE
+    end
+
+    # Reads SVG file contents, strips any XML preamble, and merges width/height
+    # attributes from the image node into the root <svg> tag.
+    # @return [String, nil] raw SVG markup, or nil if the file could not be read.
+    def read_svg_contents(target)
+      svg = read_contents(target,
+        start: (document.attr 'imagesdir'),
+        normalize: true,
+        label: 'SVG',
+        warn_if_empty: true)
+      return unless svg && !svg.empty?
+
+      svg = svg.sub(SVG_PREAMBLE_RX, '') unless svg.start_with?('<svg')
+      old_start_tag = new_start_tag = start_tag_match = nil
+      %w[width height].each do |dim|
+        next unless attr?(dim)
+        unless new_start_tag
+          next if (start_tag_match ||= svg.match(SVG_START_TAG_RX) || :no_match) == :no_match
+          new_start_tag = (old_start_tag = start_tag_match[0]).gsub(SVG_DIMENSION_ATTR_RX, '')
+        end
+        new_start_tag = %(#{new_start_tag.chop} #{dim}="#{attr dim}">)
+      end
+      svg = %(#{new_start_tag}#{svg[old_start_tag.length..]}) if new_start_tag
+      svg
+    end
+
+    #--------------------------------------------------------
     # block_image
     #
 
@@ -978,8 +1017,14 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
       'aria-label'=>image_link_label,
       :target=>(attr :window),
       :rel=>link_rel) do; _slim_controls4 = ''.dup; 
+      ; if svg_image? && option?('inline'); 
+      ; _slim_controls4 << ((read_svg_contents(attr :target) || %(<span class="alt">#{attr :alt}</span>)).to_s); 
+      ; elsif svg_image? && option?('interactive'); 
+      ; svg_fallback = (attr? :fallback) ? %(<img src="#{image_uri(attr :fallback)}" alt="#{attr :alt}">) : %(<span class="alt">#{attr :alt}</span>); 
+      ; _slim_controls4 << ((%(<object type="image/svg+xml" data="#{target_url}"#{(" width=\"#{attr :width}\"" if attr? :width)}#{(" height=\"#{attr :height}\"" if attr? :height)}>#{svg_fallback}</object>)).to_s); 
+      ; else; 
       ; _slim_controls4 << ("<img".freeze); _slim_codeattributes1 = target_url; if _slim_codeattributes1; if _slim_codeattributes1 == true; _slim_controls4 << (" src".freeze); else; _slim_controls4 << (" src=\"".freeze); _slim_controls4 << ((_slim_codeattributes1).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_codeattributes2 = (attr :alt); if _slim_codeattributes2; if _slim_codeattributes2 == true; _slim_controls4 << (" alt".freeze); else; _slim_controls4 << (" alt=\"".freeze); _slim_controls4 << ((_slim_codeattributes2).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_codeattributes3 = (attr :width); if _slim_codeattributes3; if _slim_codeattributes3 == true; _slim_controls4 << (" width".freeze); else; _slim_controls4 << (" width=\"".freeze); _slim_controls4 << ((_slim_codeattributes3).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_codeattributes4 = (attr :height); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls4 << (" height".freeze); else; _slim_controls4 << (" height=\"".freeze); _slim_controls4 << ((_slim_codeattributes4).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_codeattributes5 = (attr :loading); if _slim_codeattributes5; if _slim_codeattributes5 == true; _slim_controls4 << (" loading".freeze); else; _slim_controls4 << (" loading=\"".freeze); _slim_controls4 << ((_slim_codeattributes5).to_s); _slim_controls4 << ("\"".freeze); end; end; _slim_controls4 << (">".freeze); 
-      ; _slim_controls4; end; _slim_controls2 << ((_slim_controls3).to_s); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
+      ; end; _slim_controls4; end; _slim_controls2 << ((_slim_controls3).to_s); _slim_controls2; end; _buf << ((_slim_controls1).to_s); _buf
     end
   end
 
@@ -1060,6 +1105,11 @@ class Asciidoctor::Html5s::Converter < ::Asciidoctor::Converter::Base
       ; elsif type == 'icon' && !(document.attr? :icons); 
       ; _slim_controls2 << ("<b".freeze); _temple_html_attributeremover2 = ''.dup; _slim_codeattributes3 = ['icon', role]; if Array === _slim_codeattributes3; _slim_codeattributes3 = _slim_codeattributes3.flatten; _slim_codeattributes3.map!(&:to_s); _slim_codeattributes3.reject!(&:empty?); _temple_html_attributeremover2 << ((_slim_codeattributes3.join(" ")).to_s); else; _temple_html_attributeremover2 << ((_slim_codeattributes3).to_s); end; _temple_html_attributeremover2; if !_temple_html_attributeremover2.empty?; _slim_controls2 << (" class=\"".freeze); _slim_controls2 << ((_temple_html_attributeremover2).to_s); _slim_controls2 << ("\"".freeze); end; _slim_codeattributes4 = (attr :title); if _slim_codeattributes4; if _slim_codeattributes4 == true; _slim_controls2 << (" title".freeze); else; _slim_controls2 << (" title=\"".freeze); _slim_controls2 << ((_slim_codeattributes4).to_s); _slim_controls2 << ("\"".freeze); end; end; _slim_controls2 << (">[".freeze); 
       ; _slim_controls2 << ((attr :alt).to_s); _slim_controls2 << ("]</b>".freeze); 
+      ; elsif svg_image?(target) && option?('inline'); 
+      ; _slim_controls2 << ((read_svg_contents(target) || %(<span class="alt">#{attr :alt}</span>)).to_s); 
+      ; elsif svg_image?(target) && option?('interactive'); 
+      ; svg_fallback = (attr? :fallback) ? %(<img src="#{image_uri(attr :fallback)}" alt="#{attr :alt}">) : %(<span class="alt">#{attr :alt}</span>); 
+      ; _slim_controls2 << ((%(<object type="image/svg+xml" data="#{image_uri target}"#{(" width=\"#{attr :width}\"" if attr? :width)}#{(" height=\"#{attr :height}\"" if attr? :height)}>#{svg_fallback}</object>)).to_s); 
       ; else; 
       ; 
       ; 
