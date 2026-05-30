@@ -415,6 +415,45 @@ module Slim::Helpers # rubocop:disable Style/ClassAndModuleChildren
   end
 
   #--------------------------------------------------------
+  # block_image / inline_image (SVG support)
+  #
+
+  SVG_PREAMBLE_RX = /\A.*?(?=<svg[\s>])/m
+  SVG_START_TAG_RX = /\A<svg(?:\s[^>]*)?>/
+  SVG_DIMENSION_ATTR_RX = /\s(?:width|height|style)=(["']).*?\1/
+
+  # @return [Boolean] true if this image targets an SVG in a non-secure document.
+  def svg_image?(target = attr(:target))
+    (target.end_with?('.svg') || attr?(:format, 'svg')) &&
+      document.safe < ::Asciidoctor::SafeMode::SECURE
+  end
+
+  # Reads SVG file contents, strips any XML preamble, and merges width/height
+  # attributes from the image node into the root <svg> tag.
+  # @return [String, nil] raw SVG markup, or nil if the file could not be read.
+  def read_svg_contents(target)
+    svg = read_contents(target,
+      start: (document.attr 'imagesdir'),
+      normalize: true,
+      label: 'SVG',
+      warn_if_empty: true)
+    return unless svg && !svg.empty?
+
+    svg = svg.sub(SVG_PREAMBLE_RX, '') unless svg.start_with?('<svg')
+    old_start_tag = new_start_tag = start_tag_match = nil
+    %w[width height].each do |dim|
+      next unless attr?(dim)
+      unless new_start_tag
+        next if (start_tag_match ||= svg.match(SVG_START_TAG_RX) || :no_match) == :no_match
+        new_start_tag = (old_start_tag = start_tag_match[0]).gsub(SVG_DIMENSION_ATTR_RX, '')
+      end
+      new_start_tag = %(#{new_start_tag.chop} #{dim}="#{attr dim}">)
+    end
+    svg = %(#{new_start_tag}#{svg[old_start_tag.length..]}) if new_start_tag
+    svg
+  end
+
+  #--------------------------------------------------------
   # block_image
   #
 

@@ -4,6 +4,11 @@
   - elsif type == 'icon' && !(document.attr? :icons)
     b class=['icon', role] title=(attr :title)
       | [#{attr :alt}]
+  - elsif svg_image?(target) && option?('inline')
+    == read_svg_contents(target) || %(<span class="alt">#{attr :alt}</span>)
+  - elsif svg_image?(target) && option?('interactive')
+    - svg_fallback = (attr? :fallback) ? %(<img src="#{image_uri(attr :fallback)}" alt="#{attr :alt}">) : %(<span class="alt">#{attr :alt}</span>)
+    == %(<object type="image/svg+xml" data="#{image_uri target}"#{(" width=\"#{attr :width}\"" if attr? :width)}#{(" height=\"#{attr :height}\"" if attr? :height)}>#{svg_fallback}</object>)
   - else
     img (src=(type == 'icon' ? (icon_uri target) : (image_uri target))
          alt=(attr :alt) width=(attr :width) height=(attr :height) title=(attr :title) loading=(attr :loading)

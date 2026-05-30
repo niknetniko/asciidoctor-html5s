@@ -27,3 +27,16 @@ image::sunset.jpg[link=none]
 // .html5s-image-default-link-self-with-link-url
 :html5s-image-default-link: self
 image::sunset.jpg[link="http://www.flickr.com/photos/javh/5448336655"]
+
+// .svg-interactive
+image::diagram.svg[opts=interactive]
+
+// .svg-interactive-with-fallback
+image::diagram.svg[alt=Diagram,opts=interactive,fallback=diagram.png]
+
+// .svg-interactive-with-dimensions
+image::diagram.svg[opts=interactive,width=100,height=200]
+
+// .svg-inline
+:imagesdir: test/examples/asciidoc-html
+image::diagram.svg[opts=inline]

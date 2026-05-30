@@ -7,4 +7,10 @@
       'aria-label'=>image_link_label,
       :target=>(attr :window),
       :rel=>link_rel)
-    img src=target_url alt=(attr :alt) width=(attr :width) height=(attr :height) loading=(attr :loading)
+    - if svg_image? && option?('inline')
+      == read_svg_contents(attr :target) || %(<span class="alt">#{attr :alt}</span>)
+    - elsif svg_image? && option?('interactive')
+      - svg_fallback = (attr? :fallback) ? %(<img src="#{image_uri(attr :fallback)}" alt="#{attr :alt}">) : %(<span class="alt">#{attr :alt}</span>)
+      == %(<object type="image/svg+xml" data="#{target_url}"#{(" width=\"#{attr :width}\"" if attr? :width)}#{(" height=\"#{attr :height}\"" if attr? :height)}>#{svg_fallback}</object>)
+    - else
+      img src=target_url alt=(attr :alt) width=(attr :width) height=(attr :height) loading=(attr :loading)

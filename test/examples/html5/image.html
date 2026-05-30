@@ -102,3 +102,23 @@
     <img alt="sunset" src="sunset.jpg">
   </a>
 </div>
+
+<!-- .svg-interactive -->
+<div class="image-block">
+  <object data="diagram.svg" type="image/svg+xml"><span class="alt">diagram</span></object>
+</div>
+
+<!-- .svg-interactive-with-fallback -->
+<div class="image-block">
+  <object data="diagram.svg" type="image/svg+xml"><img alt="Diagram" src="diagram.png"></object>
+</div>
+
+<!-- .svg-interactive-with-dimensions -->
+<div class="image-block">
+  <object data="diagram.svg" height="200" type="image/svg+xml" width="100"><span class="alt">diagram</span></object>
+</div>
+
+<!-- .svg-inline -->
+<div class="image-block">
+  <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="4"></circle></svg>
+</div>
