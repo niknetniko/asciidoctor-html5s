@@ -57,3 +57,50 @@ image::sunset.jpg[TypeScript screenshot]
 :html5s-small-caps: TypeScript
 
 link:https://TypeScript.org[Visit site]
+
+// .with-punctuation
+:html5s-small-caps: TypeScript
+
+Is it written in TypeScript? I love "TypeScript". (TypeScript).
+
+// .partial-word-match
+:html5s-small-caps: Script
+
+I am writing a PostScript and learning TypeScript.
+
+// .inside-emphasis-and-strong
+:html5s-small-caps: TypeScript
+
+You really must try *TypeScript* or _TypeScript_ today.
+
+// .inside-link-text
+:html5s-small-caps: TypeScript
+
+link:https://typescriptlang.org[Learn TypeScript here]
+
+// .not-in-code-block
+:html5s-small-caps: TypeScript
+
+[source,typescript]
+----
+/* A TypeScript comment */
+const language = "TypeScript";
+----
+
+// .table-cells
+:html5s-small-caps: TypeScript
+
+|===
+| Header TypeScript | Another Header
+
+| Body TypeScript
+| Cell
+|===
+
+// .empty-attribute
+:html5s-small-caps:
+
+Use TypeScript today.
+
+// .missing-attribute
+Use TypeScript today.
