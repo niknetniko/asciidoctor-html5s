@@ -17,6 +17,8 @@ module Asciidoctor
       def process(document, output)
         return output unless document.basebackend? 'html'
 
+        return output if output.nil?
+
         words_raw = document.attr('html5s-small-caps', '')
         return output if words_raw.empty?
 
